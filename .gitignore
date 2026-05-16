@@ -1,0 +1,28 @@
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# Logs
+logs/*.log
+*.log
+
+# Generated audio output
+stories/*/output/*.mp3
+stories/*/output/*.wav
+stories/*/output/*.m4a
+stories/*/output/*.json
+
+# Optional generated/cache files
+*.tmp
+*.bak
+.DS_Store
+Thumbs.db

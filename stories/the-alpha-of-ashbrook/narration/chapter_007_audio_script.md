@@ -1,0 +1,60 @@
+# Chapter 7
+
+## Third Row
+
+<!-- Audio-prepared script: story text preserved; tags added for generation. -->
+
+[SFX: hearing hall ambience drops tense and low]
+
+[NARRATOR]
+The scent hit him like cold water down the spine.
+
+[NARRATOR]
+It was lemon and ginger and clean sweat and warm cotton and underneath all of that, the thing the wolf had been waiting for, the only thing it had ever wanted — *her.* His chest opened. His mouth went dry. The pen slid from his fingers and clicked once on the folding table and he did not hear it.
+
+[WOLF_INTERNAL]
+*Mate.*
+
+[NARRATOR]
+The wolf was not pacing. The wolf was not leaning. The wolf was standing up inside him with its head lowered and its eyes fixed, and every muscle in Roman's body had gone still around it.
+
+[WOLF_INTERNAL]
+*Mate. Mate. There. Third row. There.*
+
+[NARRATOR]
+He moved his eyes.
+
+[NARRATOR]
+She was sitting in the third row with a folder against her thighs and a green dress under a denim jacket and her hair pulled back from her face. She was looking at him. She was looking at him with an expression he could not place because his brain was not working — only the wolf was working, and the wolf was cataloguing her: the angle of her jaw, the curve of her neck, the line of her shoulders, the place under her collarbone where her pulse was beating too fast. The wolf was saying her pulse was beating too fast. The wolf was saying she could feel something was wrong even if she didn't know what.
+
+[NARRATOR]
+She was beautiful. He did not have the room in his head for that. He registered it the way a man registers a building on fire — present, undeniable, not the point.
+
+[NARRATOR]
+Marcus's voice was at his elbow. 
+
+[MARCUS]
+"Alpha. Alpha, look at me."
+
+[NARRATOR]
+He did not look at Marcus.
+
+[MARCUS]
+"Roman."
+
+[NARRATOR]
+He did not look at Marcus.
+
+[NARRATOR]
+She was looking at his eyes. She had not looked away. She was a human woman in the third row of a community hall and her face was not the face of a woman who knew what was happening, but she was looking at him anyway, and her mouth was just slightly open, and the wolf, which had been silent and listening for twenty years, threw its head back inside him and *howled.*
+
+[SFX: chair scraping back across linoleum]
+
+[NARRATOR]
+Roman pushed his chair back.
+
+[NARRATOR]
+The legs scraped on the linoleum. The sound went on for a long time.
+
+[NARRATOR]
+He stood up.
