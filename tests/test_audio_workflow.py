@@ -72,6 +72,21 @@ class AudioWorkflowTests(unittest.TestCase):
             aw.generate_story(story)
         self.assertIn("no prepared narration scripts", str(ctx.exception))
 
+    def test_generate_groups_audio_under_repo_output_story_slug(self):
+        script = self.story / "narration" / "chapter_001_audio_script.md"
+        script.write_text("[NARRATOR]\nRain fell.\n", encoding="utf-8")
+        (self.root / "config").mkdir()
+        aw.save_voice_roles({role: f"voice-{role.lower()}" for role in aw.REQUIRED_VOICE_ROLES}, self.root)
+        story = aw.Story("silver-footfalls", self.story)
+
+        with patch("audio_workflow.Path.cwd", return_value=self.root), patch.dict("os.environ", {"ELEVENLABS_API_KEY": "test"}, clear=False):
+            with patch("audio_workflow.elevenlabs_tts", return_value=b"mp3-bytes"):
+                aw.generate_story(story)
+
+        self.assertTrue((self.root / "output" / "silver-footfalls" / "chapter_001.mp3").exists())
+        self.assertTrue((self.root / "output" / "silver-footfalls" / "chapter_001_metadata.json").exists())
+        self.assertFalse((self.story / "output" / "chapter_001.mp3").exists())
+
     def test_status_recommends_explicit_auto_prepare(self):
         (self.story / "chapters" / "chapter_001.md").write_text("Plain prose.", encoding="utf-8")
         story = aw.Story("silver-footfalls", self.story)

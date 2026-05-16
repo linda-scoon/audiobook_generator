@@ -16,8 +16,8 @@ set -euo pipefail
 #     chapters/
 #     bible/
 #     narration/
-#     output/
 #     logs/
+#   output/<story-slug>/
 
 if [ "$#" -lt 1 ]; then
   echo "Error: Please provide a story title or slug."
@@ -57,8 +57,8 @@ mkdir -p "$STORY_DIR/source"
 mkdir -p "$STORY_DIR/chapters"
 mkdir -p "$STORY_DIR/bible"
 mkdir -p "$STORY_DIR/narration"
-mkdir -p "$STORY_DIR/output"
 mkdir -p "$STORY_DIR/logs"
+mkdir -p "$REPO_ROOT/output/$STORY_SLUG"
 
 cat > "$STORY_DIR/story.json" <<EOF
 {
@@ -132,19 +132,21 @@ Recommended naming:
 If a narration script exists, the generator should use it instead of preparing one from the source/chapter document.
 EOF
 
-cat > "$STORY_DIR/output/README.md" <<EOF
+if [ ! -e "$REPO_ROOT/output/README.md" ]; then
+  cat > "$REPO_ROOT/output/README.md" <<EOF
 # Generated audio output
 
-Generated MP3 files and metadata go here.
+Generated MP3 files and metadata are grouped by story slug. The generator writes chapter files directly inside each story-named output folder instead of creating per-chapter folders.
 
 Recommended naming:
-- chapter_001.mp3
-- chapter_001_metadata.json
-- chapter_002.mp3
-- chapter_002_metadata.json
+- $STORY_SLUG/chapter_001.mp3
+- $STORY_SLUG/chapter_001_metadata.json
+- $STORY_SLUG/chapter_002.mp3
+- $STORY_SLUG/chapter_002_metadata.json
 
 The generator should not overwrite existing MP3s unless --force is passed.
 EOF
+fi
 
 cat > "$STORY_DIR/logs/README.md" <<EOF
 # Logs
@@ -163,5 +165,6 @@ echo
 echo "Next steps:"
 echo "1. Put your source manuscript in: stories/$STORY_SLUG/source/$STORY_SLUG.docx"
 echo "2. Add character/style/plot files to: stories/$STORY_SLUG/bible/"
-echo "3. From repo root, run:"
+echo "3. Generated audio will be written to: output/$STORY_SLUG/"
+echo "4. From repo root, run:"
 echo "   audio status $STORY_SLUG"

@@ -15,8 +15,10 @@ stories/<story-slug>/
   chapters/    # clean split chapter source files, e.g. chapter_001.md
   bible/       # character bibles, pronunciation notes, style guides
   narration/   # prepared audio-drama scripts, e.g. chapter_001_audio_script.md
-  output/      # generated MP3s and generation metadata
   logs/        # preparation and generation logs
+
+output/
+  <story-slug>/  # generated MP3s and generation metadata for that story
 ```
 
 `chapters/` files preserve original story text split by chapter. `narration/` files contain the same story content with audio tags such as `[NARRATOR]`, `[FMC]`, `[MMC: low, controlled]`, `[WOLF_OR_MONSTER]`, and `[SFX: sound effect description]`.
@@ -236,7 +238,7 @@ For each story/chapter, the workflow is:
 1. Use `narration/chapter_###_audio_script.md` if it exists.
 2. Otherwise prepare from `chapters/chapter_###.md`, `.txt`, or `.docx`.
 3. Otherwise split a single manuscript from `source/` into clean chapter files, then prepare narration scripts.
-4. Generate MP3s into `output/` only after narration scripts exist and `config/voice_roles.json` contains non-blank IDs for all required roles.
+4. Generate MP3s into the repo-root `output/<story-slug>/` folder only after narration scripts exist and `config/voice_roles.json` contains non-blank IDs for all required roles. Chapter MP3s and metadata stay directly in that story-named folder; the workflow intentionally avoids per-chapter folders to keep the tree shallow.
 
 Existing chapter files, narration scripts, and MP3s are skipped unless `--force` is passed. `audio status` reports missing and stale artifacts and recommends the next command.
 
