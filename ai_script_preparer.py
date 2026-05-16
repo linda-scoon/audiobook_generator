@@ -12,6 +12,7 @@ import os
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
+from pathlib import Path
 
 
 class PreparationError(RuntimeError):
@@ -21,19 +22,21 @@ class PreparationError(RuntimeError):
 SUPPORTED_PROVIDERS = {"openai", "anthropic"}
 
 
-SYSTEM_PROMPT = """You convert prose into an audio-drama narration script.
+PROMPT_PATH = Path("prompts/audio_script_preparation_prompt.md")
 
-Rules:
-- Preserve the original story content and chapter order.
-- Do not summarize, remove story text, improve prose, or add plot events.
-- Preserve dialogue meaning.
-- Add speaker labels and narrator blocks.
-- Add light emotional/performance direction only where useful.
-- Add sound effects sparingly.
-- Avoid adding new dialogue unless needed for attribution.
-- Return only the prepared script, using blocks like [NARRATOR], [CHARACTER_NAME: emotional direction], and [SFX: sound effect description].
-- Keep the result suitable for ElevenLabs text-to-speech generation.
-"""
+
+def load_preparation_prompt(prompt_path: Path | None = None) -> str:
+    path = prompt_path or PROMPT_PATH
+    if not path.exists():
+        raise PreparationError(
+            f"Audio script preparation prompt is missing: {path}. "
+            "Create prompts/audio_script_preparation_prompt.md before preparing unprepared prose."
+        )
+    prompt = path.read_text(encoding="utf-8").strip()
+    if not prompt:
+        raise PreparationError(f"Audio script preparation prompt is empty: {path}")
+    return prompt
+
 
 
 @dataclass(frozen=True)
@@ -48,8 +51,9 @@ class AIPreparationResult:
 class AIScriptPreparer:
     """Prepare normal prose as an audio-drama script using a configured provider."""
 
-    def __init__(self, provider: str | None = None) -> None:
+    def __init__(self, provider: str | None = None, prompt_path: Path | None = None) -> None:
         self.provider = resolve_provider(provider)
+        self.system_prompt = load_preparation_prompt(prompt_path)
 
     def prepare(self, prose: str) -> AIPreparationResult:
         """Return an audio-drama script for prose.
@@ -73,7 +77,7 @@ class AIScriptPreparer:
         payload = {
             "model": model,
             "messages": [
-                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "system", "content": self.system_prompt},
                 {"role": "user", "content": prose},
             ],
             "temperature": 0.2,
@@ -101,7 +105,7 @@ class AIScriptPreparer:
             "model": model,
             "max_tokens": 8192,
             "temperature": 0.2,
-            "system": SYSTEM_PROMPT,
+            "system": self.system_prompt,
             "messages": [{"role": "user", "content": prose}],
         }
         data = _post_json(
