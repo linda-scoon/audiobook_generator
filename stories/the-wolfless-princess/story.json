@@ -1,0 +1,11 @@
+{
+  "slug": "the-wolfless-princess",
+  "title": "The Wolfless Princess",
+  "status": "draft",
+  "commercialUse": true,
+  "sourceManuscript": "source/the-wolfless-princess.docx",
+  "chapterPattern": "chapter_###",
+  "defaultNarrator": "",
+  "voiceProfile": "default",
+  "notes": "Place the source manuscript in source/. Place chapter files in chapters/. Place story planning files in bible/."
+}

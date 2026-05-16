@@ -1,0 +1,11 @@
+{
+  "slug": "senator-alpha",
+  "title": "Senator Alpha",
+  "status": "draft",
+  "commercialUse": true,
+  "sourceManuscript": "source/senator-alpha.docx",
+  "chapterPattern": "chapter_###",
+  "defaultNarrator": "",
+  "voiceProfile": "default",
+  "notes": "Place the source manuscript in source/. Place chapter files in chapters/. Place story planning files in bible/."
+}
