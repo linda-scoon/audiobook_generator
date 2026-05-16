@@ -12,7 +12,7 @@ The driver caught Roman's eye in the rearview before they had cleared the second
 [NARRATOR]
 He was an older man, fifteen years with the Vance Pack, and his face was carefully neutral in the way that meant it was anything but. He held Roman's gaze for one beat.
 
-[DRIVER]
+[OLDER_MALE]
 "Congratulations, Alpha,"
 
 [NARRATOR]
@@ -38,37 +38,37 @@ She turned her head.
 [NARRATOR]
 He was watching her. He had not stopped watching her since the door had closed. His eyes were grey again, ordinary grey, but his face was the face of a man who had run a long distance and arrived. He reached for her — slowly, the way you reach for something that might bolt — and his fingers brushed her hair back from her temple, and then his palm cupped the side of her head, and then he leaned forward and pressed his mouth, briefly, to the top of her hair.
 
-[ROMAN]
+[MMC]
 "I have you,"
 
 [NARRATOR]
  he said into it. 
 
-[ROMAN]
+[MMC]
 "I have you. I have you."
 
-[ELENA]
+[FMC]
 "Stop the car."
 
-[ROMAN]
+[MMC]
 "I can't, sweetheart."
 
-[ELENA]
+[FMC]
 "Stop the car, Alpha. Stop the car right now."
 
-[ROMAN]
+[MMC]
 "I can't."
 
 [NARRATOR]
 She made herself breathe. She made herself find the voice she used at meetings, the precise one, the one that had been polite four times. 
 
-[ELENA]
+[FMC]
 "My brother is on the floor of that hall. My business is on that street. My mother is going to hear about this in twenty minutes and she will have a heart attack. Stop the car. Let me out. I will not press charges. I will not file a complaint. I will go home."
 
 [NARRATOR]
 His hand had not moved from her head.
 
-[ROMAN]
+[MMC]
 "Ms. Cruz,"
 
 [NARRATOR]
@@ -77,22 +77,22 @@ His hand had not moved from her head.
 [NARRATOR]
 She blinked. 
 
-[ELENA]
+[FMC]
 "How do you know my name."
 
-[ROMAN]
+[MMC]
 "Your Gamma wrote it down. The clerk read the list. I have been hearing it for an hour without listening to it, and now I will not hear anything else for the rest of my life."
 
 [NARRATOR]
  His thumb moved against her temple. His voice was almost gentle. 
 
-[ROMAN]
+[MMC]
 "Listen to me. I will not touch you. I will not put a hand on you that you do not ask for. I will not take anything from you that you do not give. Do you understand?"
 
 [NARRATOR]
 She looked at him.
 
-[ROMAN]
+[MMC]
 "But I am not letting you go, Elena. Now that I have finally found you my mate"
 
 [SFX: car turning onto highway]

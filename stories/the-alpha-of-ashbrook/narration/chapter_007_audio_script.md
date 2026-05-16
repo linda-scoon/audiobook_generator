@@ -12,13 +12,13 @@ The scent hit him like cold water down the spine.
 [NARRATOR]
 It was lemon and ginger and clean sweat and warm cotton and underneath all of that, the thing the wolf had been waiting for, the only thing it had ever wanted — *her.* His chest opened. His mouth went dry. The pen slid from his fingers and clicked once on the folding table and he did not hear it.
 
-[WOLF_INTERNAL]
+[WOLF_OR_MONSTER]
 *Mate.*
 
 [NARRATOR]
 The wolf was not pacing. The wolf was not leaning. The wolf was standing up inside him with its head lowered and its eyes fixed, and every muscle in Roman's body had gone still around it.
 
-[WOLF_INTERNAL]
+[WOLF_OR_MONSTER]
 *Mate. Mate. There. Third row. There.*
 
 [NARRATOR]
@@ -33,13 +33,13 @@ She was beautiful. He did not have the room in his head for that. He registered 
 [NARRATOR]
 Marcus's voice was at his elbow. 
 
-[MARCUS]
+[ADULT_MALE_1]
 "Alpha. Alpha, look at me."
 
 [NARRATOR]
 He did not look at Marcus.
 
-[MARCUS]
+[ADULT_MALE_1]
 "Roman."
 
 [NARRATOR]

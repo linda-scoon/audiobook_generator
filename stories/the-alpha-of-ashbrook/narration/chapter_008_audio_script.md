@@ -15,13 +15,13 @@ The Alpha was on his feet. His chair had scraped backward and was tipped slightl
 [NARRATOR]
 Diego's hand closed around Elena's wrist.
 
-[DIEGO]
+[ADULT_MALE_2]
 "Get up,"
 
 [NARRATOR]
  he said. His voice was low. 
 
-[DIEGO]
+[ADULT_MALE_2]
 "Ele. Get up. Now."
 
 [NARRATOR]

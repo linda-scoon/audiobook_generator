@@ -18,28 +18,28 @@ Diego was up and lunging across the empty seat where she had been, his hand reac
 [NARRATOR]
 She was not screaming. She noticed this about herself with a clinical kind of distance. She was very still in his arms. His chest was hot under her shoulder. He smelled like cedar and something darker she could not place, and his arm under her knees was solid as a beam, and his mouth was at her temple.
 
-[ELENA]
+[FMC]
 "Put me down,"
 
 [NARRATOR]
  she said. Her voice was quiet. She did not recognize it. 
 
-[ELENA]
+[FMC]
 "Put me down. Alpha. Put me down."
 
 [NARRATOR]
 He did not put her down.
 
-[ROMAN]
+[MMC]
 "You're safe,"
 
 [NARRATOR]
  he said. His voice was low and torn open. 
 
-[ROMAN]
+[MMC]
 "You're safe. You're safe."
 
-[ELENA]
+[FMC]
 "Put me down."
 
 [SFX: doors bursting open; cold outdoor air; crowd noise]

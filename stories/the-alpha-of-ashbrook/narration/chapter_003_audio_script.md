@@ -15,40 +15,40 @@ Roman noticed it the way he always did when his driver crossed the line at Halfo
 [NARRATOR]
 Marcus was reading the briefing aloud from the seat across from him.
 
-[MARCUS]
+[ADULT_MALE_1]
 "Twenty-three petition slots. Eight pack, fifteen human. Three of the human slots are repeat petitioners. One of them is the gym woman."
 
-[ROMAN]
+[MMC]
 "What does she want?"
 
-[MARCUS]
+[ADULT_MALE_1]
 "What she always wants. Funding for the lot on Hidalgo. Youth sports facility. You denied her last quarter. And the quarter before. And the quarter before that."
 
-[ROMAN]
+[MMC]
 "And we're saying no again."
 
-[MARCUS]
+[ADULT_MALE_1]
 "We're saying no. Capital budget is allocated through spring. Nothing for new human-neighborhood projects until at least Q3."
 
 [NARRATOR]
 Roman watched the brick blur past. 
 
-[ROMAN]
+[MMC]
 "What's her angle this time?"
 
 [NARRATOR]
 Marcus glanced at the page. 
 
-[MARCUS]
+[ADULT_MALE_1]
 "She filed an updated structural survey and added a community-impact appendix. Looks like she paid for it herself."
 
-[ROMAN]
+[MMC]
 "Of course she did."
 
 [NARRATOR]
 Roman set the briefing down on the seat beside him and looked out the window. The brick was darker on this side of Halford, the shopfronts older, the awnings sagging in the way of a neighborhood that had run out of pack money sometime in the last decade. He had run his territory's budget for twelve years. He knew exactly why. He also knew there was no fix coming this quarter.
 
-[MARCUS]
+[ADULT_MALE_1]
 "Will any of them know you've never been before?"
 
 [NARRATOR]
@@ -57,28 +57,28 @@ Roman set the briefing down on the seat beside him and looked out the window. Th
 [NARRATOR]
 Roman looked at him.
 
-[MARCUS]
+[ADULT_MALE_1]
 "Some of them,"
 
 [NARRATOR]
  Marcus said. 
 
-[MARCUS]
+[ADULT_MALE_1]
 "Probably. The repeat petitioners are going to notice. They've sat in front of me three times."
 
-[ROMAN]
+[MMC]
 "Will they make trouble about it?"
 
-[MARCUS]
+[ADULT_MALE_1]
 "They'll make notes. There's a difference."
 
-[ROMAN]
+[MMC]
 "Anything else I should know."
 
-[MARCUS]
+[ADULT_MALE_1]
 "Press will be light. One stringer from the Ashbrook Sentinel, no cameras. The Sentinel reporter is the new one — eager but green. Helen Reyes from the petition office will run the queue. Two Gammas on the doors, Officer Kove inside. You're scheduled out by eleven."
 
-[ROMAN]
+[MMC]
 "Good."
 
 [NARRATOR]
