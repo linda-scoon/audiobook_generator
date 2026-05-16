@@ -4,42 +4,20 @@ set -Eeuo pipefail
 # run_audio.sh
 #
 # Safer one-command wrapper for audiobook_generator.
-# Run from repo root.
+# Run from the repository root.
+#
+# Why this wrapper runs `python audio` instead of `./audio`:
+#   On Windows Git Bash, the ./audio shebang may resolve to a broken python3
+#   Microsoft Store alias even when `python` works. This wrapper tests Python
+#   candidates and then calls the repo entrypoint through the working Python.
 #
 # Cost-control defaults:
 #   - Requires --story unless --all-stories is explicitly passed.
-#   - Does NOT source .env; ./audio loads simple .env values itself.
-#   - Runs voice auto-assign only when voice IDs are missing/blank.
+#   - Does NOT source .env; ./audio's Python CLI loads simple .env values itself.
+#   - Runs voice auto-assign only when voice IDs are missing/blank and MP3s may be generated.
 #   - Skips voice setup entirely for --prepare-only, so ElevenLabs is not needed.
 #   - Keeps the built-in review pause unless you pass --yes.
 #   - Shows status before running unless --no-status is passed.
-#
-# Examples:
-#   bash scripts/run_audio.sh --story the-alpha-of-ashbrook --mode prepared
-#   bash scripts/run_audio.sh --story the-alpha-of-ashbrook --mode prepared --chapter 1
-#   bash scripts/run_audio.sh --story the-alpha-of-ashbrook --mode unprepared --chapter 1 --prepare-only
-#   bash scripts/run_audio.sh --story the-alpha-of-ashbrook --mode unprepared --chapter 1 --yes
-#   bash scripts/run_audio.sh --story the-alpha-of-ashbrook --mode auto --chapter 1
-#   bash scripts/run_audio.sh --all-stories --mode prepared
-#
-# Notes:
-#   --prepared:
-#       Safest for AI cost. Assumes narration scripts already have valid tags.
-#
-#   --unprepared:
-#       May call your AI preparation provider if narration scripts need to be created.
-#       Use --prepare-only first if you want to review before MP3 generation.
-#
-#   --auto:
-#       Locally inspects files first. May call AI only for files that do not look prepared.
-#       Safer than --unprepared, but still potentially calls AI.
-#
-#   --yes:
-#       Allows the underlying build to continue after AI preparation without the review pause.
-#       Use carefully.
-#
-#   --force:
-#       Regenerates existing derived outputs. Use carefully.
 
 MODE=""
 STORY=""
@@ -53,7 +31,7 @@ SHOW_STATUS=1
 DRY_RUN=0
 
 usage() {
-  cat <<'EOF'
+  cat <<'USAGE'
 Usage:
   bash scripts/run_audio.sh --mode prepared|unprepared|auto --story STORY_SLUG [options]
   bash scripts/run_audio.sh --mode prepared|unprepared|auto --all-stories [options]
@@ -74,26 +52,14 @@ Options:
   --dry-run                Print what would run, but do not run setup/build.
   -h, --help               Show this help.
 
-Recommended low-cost workflows:
+Recommended low-cost workflow for unprepared prose:
+  bash scripts/run_audio.sh --story the-alpha-of-ashbrook --mode unprepared --chapter 1 --prepare-only
+  # Review stories/the-alpha-of-ashbrook/narration/chapter_001_audio_script.md
+  bash scripts/run_audio.sh --story the-alpha-of-ashbrook --mode prepared --chapter 1
 
-  1) Prepared scripts already exist; generate MP3s:
-     bash scripts/run_audio.sh --story the-alpha-of-ashbrook --mode prepared --chapter 1
-
-  2) Prose needs AI preparation, but you want to review before MP3 generation:
-     bash scripts/run_audio.sh --story the-alpha-of-ashbrook --mode unprepared --chapter 1 --prepare-only
-
-     Then review:
-       stories/the-alpha-of-ashbrook/narration/chapter_001_audio_script.md
-
-     Then generate:
-       bash scripts/run_audio.sh --story the-alpha-of-ashbrook --mode prepared --chapter 1
-
-  3) One-step unprepared build, including MP3 generation after AI prep:
-     bash scripts/run_audio.sh --story the-alpha-of-ashbrook --mode unprepared --chapter 1 --yes
-
-  4) Process all stories intentionally:
-     bash scripts/run_audio.sh --all-stories --mode prepared
-EOF
+If you see a Windows/Microsoft Store Python alias error, make sure `python --version`
+works in this shell. This wrapper intentionally uses the working Python command it finds.
+USAGE
 }
 
 die() {
@@ -107,6 +73,72 @@ require_value() {
   if [[ -z "$value" || "$value" == --* ]]; then
     die "$option requires a value."
   fi
+}
+
+find_python() {
+  local candidate
+  for candidate in python3 python py; do
+    if command -v "$candidate" >/dev/null 2>&1 && "$candidate" -c 'import sys; raise SystemExit(0 if sys.version_info >= (3, 9) else 1)' >/dev/null 2>&1; then
+      printf '%s\n' "$candidate"
+      return 0
+    fi
+  done
+  return 1
+}
+
+voice_config_state() {
+  "$PYTHON_CMD" - <<'PY'
+import json
+from pathlib import Path
+
+required = [
+    "NARRATOR",
+    "FMC",
+    "MMC",
+    "DEFAULT_FEMALE",
+    "DEFAULT_MALE",
+    "ADULT_FEMALE_1",
+    "ADULT_FEMALE_2",
+    "ADULT_MALE_1",
+    "ADULT_MALE_2",
+    "OLDER_FEMALE",
+    "OLDER_MALE",
+    "TEEN_FEMALE",
+    "TEEN_MALE",
+    "CHILD_FEMALE",
+    "CHILD_MALE",
+    "WOLF_OR_MONSTER",
+]
+
+path = Path("config/voice_roles.json")
+
+if not path.exists():
+    print("MISSING")
+    raise SystemExit(0)
+
+try:
+    data = json.loads(path.read_text(encoding="utf-8"))
+except Exception:
+    print("INVALID")
+    raise SystemExit(0)
+
+if not isinstance(data, dict):
+    print("INVALID")
+    raise SystemExit(0)
+
+missing = [role for role in required if role not in data]
+blank = [role for role in required if not str(data.get(role, "")).strip()]
+
+if missing or blank:
+    print("MISSING_OR_BLANK")
+else:
+    print("READY")
+PY
+}
+
+print_command() {
+  printf ' %q' "$@"
+  echo
 }
 
 while [[ $# -gt 0 ]]; do
@@ -196,84 +228,13 @@ if [[ ! -d "./stories" ]]; then
   die "Could not find ./stories. Run this script from the repository root."
 fi
 
-# Find Python for small local helper checks and as a fallback for ./audio.
-PYTHON_CMD=""
-if command -v python3 >/dev/null 2>&1; then
-  PYTHON_CMD="python3"
-elif command -v python >/dev/null 2>&1; then
-  PYTHON_CMD="python"
-elif command -v py >/dev/null 2>&1; then
-  PYTHON_CMD="py"
-else
-  die "Python was not found."
-fi
-
-# Prefer running the repo's ./audio entrypoint directly.
-# Fall back to: python audio
-if [[ -x "./audio" ]]; then
-  AUDIO_CMD=("./audio")
-else
-  AUDIO_CMD=("$PYTHON_CMD" "audio")
-fi
-
-voice_config_state() {
-  "$PYTHON_CMD" - <<'PY'
-import json
-from pathlib import Path
-
-required = [
-    "NARRATOR",
-    "FMC",
-    "MMC",
-    "DEFAULT_FEMALE",
-    "DEFAULT_MALE",
-    "ADULT_FEMALE_1",
-    "ADULT_FEMALE_2",
-    "ADULT_MALE_1",
-    "ADULT_MALE_2",
-    "OLDER_FEMALE",
-    "OLDER_MALE",
-    "TEEN_FEMALE",
-    "TEEN_MALE",
-    "CHILD_FEMALE",
-    "CHILD_MALE",
-    "WOLF_OR_MONSTER",
-]
-
-path = Path("config/voice_roles.json")
-
-if not path.exists():
-    print("MISSING")
-    raise SystemExit(0)
-
-try:
-    data = json.loads(path.read_text(encoding="utf-8"))
-except Exception:
-    print("INVALID")
-    raise SystemExit(0)
-
-if not isinstance(data, dict):
-    print("INVALID")
-    raise SystemExit(0)
-
-missing = [role for role in required if role not in data]
-blank = [role for role in required if not str(data.get(role, "")).strip()]
-
-if missing or blank:
-    print("MISSING_OR_BLANK")
-else:
-    print("READY")
-PY
-}
-
-print_command() {
-  printf ' %q' "$@"
-  echo
-}
+PYTHON_CMD="$(find_python)" || die "Python 3.9+ was not found. In Git Bash, try: python --version. If that works, re-run this script from the same shell."
+AUDIO_CMD=("$PYTHON_CMD" "audio")
 
 echo
 echo "Audio wrapper plan"
 echo "=================="
+echo "Python:        $PYTHON_CMD"
 echo "Mode:          $MODE"
 if [[ -n "$STORY" ]]; then
   echo "Story:         $STORY"
