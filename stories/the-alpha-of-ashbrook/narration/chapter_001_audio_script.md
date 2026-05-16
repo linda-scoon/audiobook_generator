@@ -36,7 +36,7 @@ A heron lifted off the pond at the bottom of the lawn and crossed the sky in slo
 [NARRATOR]
 There was a thought he had on these mornings sometimes. It came when the light was right and the house was quiet and the coffee was hot in his hand, and he thought it without bitterness, the way a man notices a chip on a plate he otherwise likes.
 
-[WOLF_OR_MONSTER]
+[MMC]
 *It would be nice to have someone here.*
 
 [NARRATOR]

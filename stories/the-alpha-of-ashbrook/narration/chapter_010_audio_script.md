@@ -12,7 +12,7 @@ The driver caught Roman's eye in the rearview before they had cleared the second
 [NARRATOR]
 He was an older man, fifteen years with the Vance Pack, and his face was carefully neutral in the way that meant it was anything but. He held Roman's gaze for one beat.
 
-[ADULT_MALE_1]
+[OLDER_MALE]
 "Congratulations, Alpha,"
 
 [NARRATOR]

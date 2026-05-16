@@ -39,13 +39,13 @@ A black sedan was pulled up at the curb. The driver was standing beside it in a 
 [NARRATOR]
 A woman two places ahead of them turned around. She was about Marisol's age, gold hoop earrings, a coat too thin for October. 
 
-[ADULT_FEMALE_1]
+[ADULT_FEMALE_2]
 "That's him,"
 
 [NARRATOR]
  she said, low, to nobody in particular. Her eyes were on the tall man in the suit. 
 
-[ADULT_FEMALE_1]
+[ADULT_FEMALE_2]
 "That's the Alpha himself."
 
 [NARRATOR]
@@ -54,7 +54,7 @@ The woman behind her said,
 [ADULT_FEMALE_2]
 "He doesn't come."
 
-[ADULT_FEMALE_1]
+[ADULT_FEMALE_2]
 "He's coming today."
 
 [NARRATOR]
@@ -72,13 +72,13 @@ She did not know whether to feel hopeful or sick.
 [NARRATOR]
 Diego was watching her. 
 
-[ADULT_MALE_1]
+[ADULT_MALE_2]
 "Ele."
 
 [FMC]
 "I'm fine."
 
-[ADULT_MALE_1]
+[ADULT_MALE_2]
 "You're holding the folder like it's a weapon."
 
 [NARRATOR]
@@ -90,7 +90,7 @@ She loosened her grip and looked down. The corner of the folder was creased wher
 [NARRATOR]
  she said, quietly.
 
-[ADULT_MALE_1]
+[ADULT_MALE_2]
 "I know."
 
 [FMC]
@@ -99,19 +99,19 @@ She loosened her grip and looked down. The corner of the folder was creased wher
 [NARRATOR]
 Diego shrugged. 
 
-[ADULT_MALE_1]
+[ADULT_MALE_2]
 "Maybe somebody told him to."
 
 [NARRATOR]
 The line moved. The Gamma at the door gestured them forward and asked their names. He wrote her down on his tablet. He looked her over the way Gammas looked everyone over — flat, fast, professional — and his eyes went to the folder, and to her bag, and back to her face.
 
-[OLDER_MALE]
+[ADULT_MALE_2]
 "Petition or comment?"
 
 [FMC]
 "Petition."
 
-[OLDER_MALE]
+[ADULT_MALE_2]
 "Topic?"
 
 [FMC]
@@ -120,7 +120,7 @@ The line moved. The Gamma at the door gestured them forward and asked their name
 [NARRATOR]
 He typed it. He handed her a numbered card. 
 
-[OLDER_MALE]
+[ADULT_MALE_2]
 "Wait inside. Doors close at nine."
 
 [NARRATOR]

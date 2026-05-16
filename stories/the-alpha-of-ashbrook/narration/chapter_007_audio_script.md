@@ -33,13 +33,13 @@ She was beautiful. He did not have the room in his head for that. He registered 
 [NARRATOR]
 Marcus's voice was at his elbow. 
 
-[ADULT_MALE_2]
+[ADULT_MALE_1]
 "Alpha. Alpha, look at me."
 
 [NARRATOR]
 He did not look at Marcus.
 
-[ADULT_MALE_2]
+[ADULT_MALE_1]
 "Roman."
 
 [NARRATOR]
