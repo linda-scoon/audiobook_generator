@@ -16,6 +16,10 @@ logs/*.log
 *.log
 
 # Generated audio output
+output/**/*.mp3
+output/**/*.wav
+output/**/*.m4a
+output/**/*.json
 stories/*/output/*.mp3
 stories/*/output/*.wav
 stories/*/output/*.m4a

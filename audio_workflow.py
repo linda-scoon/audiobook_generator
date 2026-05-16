@@ -156,22 +156,36 @@ def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+def repo_root_for_story(story: Story) -> Path:
+    if story.path.parent.name == "stories":
+        return story.path.parent.parent
+    return Path.cwd()
+
+
 def ensure_story_dirs(story: Story) -> None:
-    for name in ("source", "chapters", "bible", "narration", "output", "logs"):
+    for name in ("source", "chapters", "bible", "narration", "logs"):
         directory = story.path / name
         directory.mkdir(parents=True, exist_ok=True)
+    story_output_dir(story).mkdir(parents=True, exist_ok=True)
     readmes = {
         "bible/README.md": "# Story bible\n\nPut character bibles, voice notes, pronunciation notes, and style guides here.\n",
         "source/README.md": "# Source manuscript\n\nPut the untouched full manuscript here. Supported formats: .md, .txt, .docx.\n",
         "chapters/README.md": "# Chapter files\n\nPut clean split source chapters here as chapter_001.md, chapter_002.md, etc.\n",
         "narration/README.md": "# Narration scripts\n\nPrepared audio-drama scripts belong here as chapter_001_audio_script.md.\n",
-        "output/README.md": "# Generated audio output\n\nGenerated MP3 files and generation metadata belong here.\n",
         "logs/README.md": "# Logs\n\nPreparation and generation logs belong here.\n",
     }
     for relative, content in readmes.items():
         path = story.path / relative
         if not path.exists():
             atomic_write_text(path, content)
+    output_readme = repo_root_for_story(story) / "output" / "README.md"
+    if not output_readme.exists():
+        atomic_write_text(
+            output_readme,
+            "# Generated audio output\n\nGenerated MP3 files and generation metadata are grouped by story slug. "
+            "Chapter files live directly inside each story folder, for example "
+            "`output/<story-slug>/chapter_001.mp3`; separate per-chapter folders are intentionally avoided.\n",
+        )
 
 
 def resolve_stories(repo_root: Path, selector: str | None) -> list[Story]:
@@ -362,12 +376,16 @@ def preparation_metadata_path(story: Story, number: int) -> Path:
     return story.path / "narration" / f"chapter_{number:03d}_preparation_metadata.json"
 
 
+def story_output_dir(story: Story) -> Path:
+    return repo_root_for_story(story) / "output" / story.slug
+
+
 def mp3_path(story: Story, number: int) -> Path:
-    return story.path / "output" / f"chapter_{number:03d}.mp3"
+    return story_output_dir(story) / f"chapter_{number:03d}.mp3"
 
 
 def generation_metadata_path(story: Story, number: int) -> Path:
-    return story.path / "output" / f"chapter_{number:03d}_metadata.json"
+    return story_output_dir(story) / f"chapter_{number:03d}_metadata.json"
 
 
 def chapter_sources(story: Story) -> list[ChapterSource]:
@@ -689,7 +707,7 @@ def generate_story(story: Story, force: bool = False, chapter: int | None = None
             "created_at": now_iso(),
             "script_path": str(script.relative_to(story.path)),
             "script_sha256": sha256_file(script),
-            "mp3_path": str(target.relative_to(story.path)),
+            "mp3_path": str(target.relative_to(repo_root_for_story(story))),
             "mp3_sha256": sha256_file(target),
             "voice_roles": used_voice_ids,
             "speakable_blocks": len(speakable),
