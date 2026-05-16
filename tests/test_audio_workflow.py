@@ -1,3 +1,4 @@
+import os
 import tempfile
 import unittest
 from pathlib import Path
@@ -109,6 +110,29 @@ class AudioWorkflowTests(unittest.TestCase):
         updated = aw.load_voice_roles(self.root)
         self.assertEqual(updated["NARRATOR"], "saved-narrator")
         self.assertEqual(updated["FMC"], "female-1")
+
+    def test_load_env_file_reads_repo_dotenv_without_overwriting_shell(self):
+        (self.root / ".env").write_text(
+            "# local secrets\n"
+            "ELEVENLABS_API_KEY=from-dotenv\n"
+            "OPENAI_API_KEY=from-file # inline comment\n"
+            "export ANTHROPIC_API_KEY='anthropic file key'\n",
+            encoding="utf-8",
+        )
+        with patch.dict("os.environ", {"ELEVENLABS_API_KEY": "from-shell"}, clear=True):
+            aw.load_env_file(self.root)
+            self.assertEqual(os.environ["ELEVENLABS_API_KEY"], "from-shell")
+            self.assertEqual(os.environ["OPENAI_API_KEY"], "from-file")
+            self.assertEqual(os.environ["ANTHROPIC_API_KEY"], "anthropic file key")
+
+    def test_main_loads_dotenv_before_elevenlabs_voice_commands(self):
+        (self.root / ".env").write_text("ELEVENLABS_API_KEY=from-dotenv\n", encoding="utf-8")
+        voices = [{"voice_id": "voice-1", "name": "Dotenv voice"}]
+        with patch("audio_workflow.Path.cwd", return_value=self.root), patch.dict("os.environ", {}, clear=True):
+            with patch("audio_workflow.elevenlabs_list_voices", return_value=voices) as mocked_list:
+                exit_code = aw.main(["voices", "list"])
+        self.assertEqual(exit_code, 0)
+        mocked_list.assert_called_once_with("from-dotenv")
 
     def test_preparation_prompt_file_is_loaded(self):
         from ai_script_preparer import load_preparation_prompt

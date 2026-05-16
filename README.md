@@ -130,6 +130,8 @@ ELEVENLABS_API_KEY=...
 ELEVENLABS_MODEL_ID=eleven_multilingual_v2  # optional
 ```
 
+You can export those values in your shell or put them in a repo-root `.env` file. The CLI automatically loads simple `KEY=VALUE` lines from `.env` at startup, without overwriting variables that are already exported in your shell. `.env` is ignored by git so local API keys are not committed.
+
 `ELEVENLABS_VOICE_ID` is not used. Voice IDs are resolved by role from `config/voice_roles.json`.
 
-API keys are only required when paid work or ElevenLabs account lookup is actually needed. Status, local validation, and voice-role JSON checks do not spend generation credits.
+API keys are only required when paid work, AI preparation, or ElevenLabs account lookup is actually needed. Status, local validation, and voice-role JSON checks do not spend generation credits.
