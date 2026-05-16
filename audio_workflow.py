@@ -48,6 +48,42 @@ SPEAKER_HEADER_RE = re.compile(r"^\[([A-Z][A-Z0-9_]*)(?:\s*:[^\]]+)?\]\s*$")
 CHAPTER_HEADING_RE = re.compile(r"(?im)^\s*(chapter\s+(?:\d+|[ivxlcdm]+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)|prologue|epilogue)\b.*$")
 
 
+ENV_KEY_RE = re.compile(r"^[A-Za-z_][A-Za-z0-9_]*$")
+
+
+def _unquote_env_value(value: str) -> str:
+    if len(value) >= 2 and value[0] == value[-1] and value[0] in {"'", '"'}:
+        quote = value[0]
+        inner = value[1:-1]
+        if quote == '"':
+            return bytes(inner, "utf-8").decode("unicode_escape")
+        return inner
+    return value
+
+
+def load_env_file(repo_root: Path) -> None:
+    """Load simple KEY=VALUE pairs from repo-root .env without overwriting existing env vars."""
+    env_path = repo_root / ".env"
+    if not env_path.exists():
+        return
+    for raw_line in env_path.read_text(encoding="utf-8").splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if line.startswith("export "):
+            line = line[len("export ") :].strip()
+        if "=" not in line:
+            continue
+        key, value = line.split("=", 1)
+        key = key.strip()
+        if not ENV_KEY_RE.match(key):
+            continue
+        value = value.strip()
+        if value and value[0] not in {"'", '"'}:
+            value = value.split(" #", 1)[0].rstrip()
+        os.environ.setdefault(key, _unquote_env_value(value))
+
+
 class WorkflowError(RuntimeError):
     """Raised for user-fixable workflow errors."""
 
@@ -867,6 +903,7 @@ def make_parser() -> argparse.ArgumentParser:
     preview.add_argument("--yes", action="store_true", help="Confirm that preview generation spends ElevenLabs credits.")
     return parser
 
+
 def selected_mode(args: argparse.Namespace) -> str | None:
     if getattr(args, "prepared", False):
         return "prepared"
@@ -881,6 +918,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = make_parser()
     args = parser.parse_args(argv)
     repo_root = Path.cwd()
+    load_env_file(repo_root)
     try:
         if args.command == "voices":
             if args.voices_command == "list":
