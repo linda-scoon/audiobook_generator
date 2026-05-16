@@ -8,12 +8,20 @@
 
 ## GENRE & TONE
 
-- Paranormal romance / medieval fantasy / Cinderella retelling (no copyright concern — Cinderella is public domain folklore).
-- Core trope: **he falls first, hard.** Alpha King recognizes his mate the moment he sees her in the moonlit garden. She does not feel the bond.
+- Paranormal romance / medieval fantasy / Cinderella retelling (public domain folklore — no copyright concern).
+- Core trope: **he falls first, fast, hard.** Cassian recognizes his mate in the moonlit garden. She does not feel the bond.
 - Series scope: 200 chapters total. This bible serves the entire arc.
-- Per-chapter length: ~300–450 words (audiobook 2–3 min at ~150 wpm).
-- Every chapter ends on a cliffhanger or unresolved tension.
+- Per-chapter length: **strict 300–450 words.** Audiobook 2–3 minutes at ~150 wpm. Do not exceed.
+- Every chapter ends on a cliffhanger, unresolved tension, or a hard beat.
 - Heat level: maximum on-page heat up to but not including graphic depiction of sex acts. Fade at the act itself. First 10 chapters are pre-physical — the heroine and hero do not even speak until chapter 10 (he glimpses her in the moonlit garden as the closing beat).
+
+---
+
+## FOUR MAJOR RULES (APPLY ACROSS ALL 10 STORIES)
+
+1. **NO REPETITION** of phrasing, descriptions, or beats across chapters.
+2. **HE FALLS FIRST, FALLS FAST, FALLS HARD.**
+3. **THE MEN ARE NOT SCRUBS.** Wealthy, powerful, independent. They do not live with their mothers.
 
 ---
 
@@ -21,137 +29,153 @@
 
 ### Setting
 
-Medieval high-fantasy. Two werewolf kingdoms — **Aldenmere** (the home realm, where Princess Raina lives with her father, stepmother, and stepsister) and **Tharnholt** (the visiting realm, ruled by the Alpha King). Both kingdoms are entirely werewolf populations at the noble level; humans exist in the wider world but are rare in the upper court and are not central to this story. Castles, horseback travel, candlelight, no electricity, no firearms, no printing press. Roughly medieval-European-flavored — think 13th–14th century. No real-world religion. Magic is rare and folkloric; nothing in the plot turns on spells.
+Medieval high-fantasy. **All-werewolf realm.** No humans of significance — they do not feature in this story. Castles, horseback travel for routine movement, candlelight, no firearms, no printing press. Roughly 13th–14th century European flavor. No real-world religion. Magic is folkloric and rare.
 
-### Werewolf Biology (within this story's rules)
+Two realms in this story:
+- **Aldenmere** — Raina's home realm. Ruled by Alpha Eadric. Her mother was the late Luna Elaria.
+- **Tharnholt** — Cassian's realm. Northern, mountain-flanked, colder. Ruled by Alpha Cassian.
 
-- Werewolves shift between human form and full-wolf form. **No hybrid / wolfman form** — fully human or fully wolf, nothing between.
-- Lifespan is normal-human. Stronger and faster in old age than humans, but they die in the same range (70s–90s).
-- A werewolf's wolf typically emerges at puberty (around 12–14). The young wolf is shaky and uncontrolled at first; full mastery by 16–18.
-- **Wolfless werewolves** are rare but documented. The wolf can fail to emerge at the usual age — sometimes by months, sometimes by years, sometimes never. The cause is unknown. Most wolfless individuals develop their wolf eventually (by their twenties); a small minority never do. There is no shame attached to it medically — it is a quirk of biology — but socially, in a noble court that values strength and mate-recognition, it is deeply awkward.
-- **Critical for this story:** Raina is wolfless. She has not yet developed her wolf at age 22, which is late enough that the court whispers but not unheard of. She does not feel the mate bond. She experiences only ordinary human-style attraction.
+### Werewolf Biology (this story)
 
-### The Mate Bond — Core Mechanic
+- Werewolves shift between human and full-wolf form. **No hybrid/wolfman.**
+- **Long lifespan: 250–350 years.** Cassian at 32 is the equivalent of a young man in his prime. Eadric at 55 is the equivalent of middle age — not elderly, but tired. Elders live to 200+.
+- Wolves emerge at puberty (12–14). Young wolves are shaky at first; full mastery by 16–18.
+- **Wolfless werewolves** are documented but rare. The wolf can fail to emerge — sometimes by months, sometimes by years, sometimes never. Cause unknown in-world. Most wolfless individuals eventually develop their wolf by their twenties; a small minority never do. Socially, in a noble court, it is deeply awkward and politically catastrophic for an heir.
+- **Critical for this story:** Raina is wolfless at 22. She has no wolf at all in her head. She cannot shift. She does not feel the mate bond. She experiences only ordinary human-style attraction or none.
 
-- Every werewolf is fated to one mate. Recognition is instant, by scent first, then sight.
-- The wolf identifies the mate before the human side does — there is a moment of certainty, `*MATE.*`
-- Symptoms in the male upon recognition: explosive protectiveness, possessiveness, total focus, physical pull, irrational rage at threats.
-- A wolfless mate cannot feel the bond from her side. She experiences ordinary attraction — or none at all. The biology is the same; only the sense is missing.
-- **Bond-sharing:** the werewolf can transfer/open the bond to a mate who can feel it (a wolfless mate's wolf must emerge first, OR a magical workaround must be sought). For the first 10 chapters this does not come into play.
+### Mate Bond — Core Mechanic
+
+- Every werewolf has one fated mate. Recognition mechanic for THIS STORY:
+  - The wolf senses something off-or-right at first sight, before the human side understands.
+  - The man steps closer. The wind shifts. Scent arrives.
+  - Scent is what triggers full recognition: `*MATE.*` — wolf detonates inside.
+  - In this story, Cassian sees her in moonlight as silhouette only — woman, dark hair, dark cloak. Her face is not visible. Wind brings scent. Wolf goes off. She runs in that exact moment. He has her scent burned into memory but no face, no name.
+- A wolfless mate cannot feel the bond from her side. She experiences nothing supernatural. Ordinary attraction at most.
+- **Bond-sharing:** can be transferred to a mate who has a wolf to receive it. For a wolfless mate, the wolf must emerge first OR another solution must be sought. Not relevant to first 10 chapters.
 - **Consent is absolute.** The bond cannot be forced.
-- **For this story specifically:** because Raina is wolfless, the Alpha King will have to woo her as a human suitor would — there is no mate-pull doing the work for him. This is a long courtship arc, and it is the engine of the 200-chapter book.
+- **Cassian's pursuit difficulty:** Raina's scent is faint because she has no wolf. He will not be able to track her properly through the castle. The 200-chapter Cinderella hunt rides on this.
 
-### Pack & Royal Structure
+### Political & Pack Structure
 
-- Each kingdom is one giant pack. The King is the Alpha of the realm.
-- **Aldenmere:** ruled by King Eadric (Raina's father). His pack is the entire kingdom; lesser nobles are pack-ranked beneath him.
-- **Tharnholt:** ruled by the Alpha King Cassian. He has no living father (succeeded his father five years ago, age 27). His pack is his entire kingdom.
-- **Beta** to each king is his second-in-command, usually a trusted noble or a brother-figure.
-- **Gammas** are royal guards / enforcers.
-- Royal marriages are political and strategic. Mate-recognition between royal lines is rare but celebrated when it happens — it secures alliances.
+- Each realm is one giant pack. Its Alpha is its sovereign.
+- **Alpha** = male sovereign. Cassian is "Alpha Cassian" or "the Alpha of Tharnholt." Eadric is "Alpha Eadric" or "the Alpha of Aldenmere."
+- **Luna** = female sovereign / wife of the Alpha. Roselle is "the Luna" or "Luna Roselle." Cassian's late mother was Luna Sabine.
+- **Princess** = daughter of an Alpha and Luna. Standard human-style title — this realm uses it.
+- **Beta** = Alpha's second. Cassian's Beta is his younger brother Theron.
+- **Gammas** = guards / enforcers.
+- Royal marriages are political. Mate-recognition between royal lines is celebrated — it secures alliances naturally.
+
+### Run, Not Hunt
+
+- Werewolves do not hunt for sport on horseback with hounds. They ARE the wolves.
+- When a noble party "hunts," it is a **run**: they shift into wolf form and move through the woods as a pack. The run serves social and political purposes — wolves of different households get acquainted, scents are exchanged, hierarchy is felt out.
+- A run on a state visit is a major social event. The visiting Alpha and his party shift with the host Alpha and his.
+- **Raina, being wolfless, cannot run.** She watches from her window as the pack leaves the south gate. This is one of the keenest, most regular daily indignities of her life.
 
 ### Why Aldenmere Hosts Tharnholt
 
-King Eadric of Aldenmere has invited the Alpha King of Tharnholt for a week of state visits and festivities. Officially, this is a renewal of an old alliance and a celebration of peace between the two kingdoms. Unofficially, Eadric wants Cassian to marry one of his daughters — preferably the more polished, more wolf-mature stepdaughter, Princess Mirella, but he is keeping that intention low-key so the Alpha King does not feel the trap closing.
+Alpha Eadric has invited Alpha Cassian for a week-long state visit. Officially: alliance renewal, peace celebration. Unofficially: Eadric wants Cassian to consider marrying one of his daughters. The Luna Roselle has been arranging this for years — she intends Mirella for the match. Eadric is willing because Mirella is wolved, accomplished, and presentable, and because he has been told for twelve years that Raina is unsuitable.
 
-Cassian, who is 32 and unmated, has accepted the invitation knowing perfectly well that Eadric wants to marry off a daughter. He is not opposed in principle to a political match, but he has not committed to anything. He is here for the alliance and the courtesy. He has met dozens of eligible women across the kingdoms over the past five years; none of them has been his mate; he has stopped expecting one.
+**Critical:** Cassian is not seeking a mate. He has met dozens of eligible women in five years. None has been his mate. He has stopped expecting one. He comes to Aldenmere for the alliance and is open in principle to a political match with Mirella, but is not committed.
 
-### Naming Conventions
+**Critical:** Cassian does NOT pursue or seek out Raina before the garden encounter. He notes her absence at the receiving. He accepts the Luna's explanation that she is unwell. He does not think about her after that. The garden meeting comes out of nowhere — a cold, total recognition with no buildup.
 
-- **Alpha** is the title for the highest werewolf ruler. The Alpha King is "the Alpha King" or "Alpha Cassian" or simply "Cassian" in informal context.
-- **King** is the political title; **Alpha** is the werewolf title. The two overlap in a werewolf monarchy — a King IS the realm's Alpha.
-- **Beta, Gamma** as in standard pack lore.
-- **Princess Raina** is "the Princess" or "Lady Raina" or simply "Raina" informally. She is not addressed as "Alpha" or any wolf title because she has no wolf.
-- **Princess Mirella** is the stepsister, daughter of the Queen by her previous marriage; styled as Princess by adoption when her mother married King Eadric.
-- Servants address the royals as "Your Majesty" (King and Queen), "Your Highness" (princes/princesses), "Your Grace" (Alpha King when visiting).
+---
+
+## NAMING CONVENTIONS
+
+- **Alpha** for male sovereigns. "Alpha Cassian," "Alpha Eadric."
+- **Luna** for female sovereigns. "Luna Roselle," "the late Luna Elaria."
+- **Princess** for daughters. "Princess Raina," "Princess Mirella."
+- **Beta, Gamma** for pack ranks.
+- Servants address royals as "Your Majesty" (Alpha/Luna), "Your Highness" (Princess), "Your Grace" (visiting Alpha).
+- Raina, in her POV, calls Eadric "my father." She uses possessive family language — not formal titles — when thinking of her own kin.
 
 ---
 
 ## MAIN CHARACTERS
 
-### CASSIAN VRENNAR — Alpha King of Tharnholt
+### CASSIAN VRENNAR — Alpha of Tharnholt
 
-- **Age:** 32
-- **Height/build:** 6'5", broad, powerful. Built for combat. Moves quietly for his size.
-- **Coloring:** Dark auburn hair worn slightly long, just past the jaw. Eyes deep amber-brown, shifting to gold when the wolf surfaces. Fair skin tanned from riding outdoors. Clean-shaven by court standards. A scar across his right palm from a sword grip that broke in battle at 24.
-- **Wolf form:** Massive russet-and-black wolf. Yellow-gold eyes. Larger than any wolf in his pack.
-- **Family:** Father (King Aldric Vrennar) deceased five years ago. Mother (Queen Mother Sabine) deceased ten years ago in a fever. **Younger brother Theron**, 28, his Beta. They are close but Theron has his own household within the castle complex. Cassian does NOT live with relatives. He has his own royal apartments and rules alone.
-- **Position:** Alpha King of Tharnholt for five years. Succeeded his father at 27. Has consolidated the realm successfully, ended one minor border skirmish, balanced the treasury. Respected by his nobles. Feared by his enemies.
+- **Age:** 32 (young by werewolf standards).
+- **Build:** 6'5", broad, powerful. Moves quietly for his size.
+- **Coloring:** Dark auburn hair just past the jaw. Amber-brown eyes, gold when wolf surfaces. Fair skin tanned from outdoor rides. Clean-shaven by court standards. A scar across his right palm.
+- **Wolf form:** Massive russet-and-black wolf. Yellow-gold eyes.
+- **Family:** Father (Alpha Aldric) deceased five years ago. Mother (Luna Sabine) deceased ten years ago. **Younger brother Theron**, 28, his Beta. Theron has his own household within the castle complex. Cassian does NOT live with relatives. He has his own royal apartments and rules alone.
+- **Position:** Alpha of Tharnholt for five years. Consolidated the realm successfully. Respected by his nobles, feared by his enemies.
 
 **Personality:**
-- Quiet. Speaks less than people expect a king to speak. Listens more.
-- Decisive when he chooses, but does not waste decisions on small things.
-- Has a dry, slow sense of humor that takes people a while to notice.
-- Patient by temperament. He has never had to beg for anything in his life and does not understand the impulse.
-- Possessive when he chooses to be — which, before recognizing his mate, is rarely.
-- Privately lonely. He has been unmated five years longer than the men of his generation. He does not show it. He does not even fully acknowledge it. But it is there.
-- His wolf is steady, regal, slow to anger and slow to settle once angered.
+- Quiet, listens more than he speaks.
+- Decisive when he chooses.
+- Dry, slow humor.
+- Patient by temperament. Has never had to beg for anything in his life.
+- Privately, faintly lonely after five years unmated — but does not dwell on it.
+- His wolf is steady, regal, slow to settle once angered.
+- **Not romantic in his head.** He approaches courtship as a duty until the garden scene. Then everything changes.
 
-**Speech patterns:**
-- Formal in court, but precise. Few wasted words.
-- Calls people by their proper titles unless invited not to.
-- When he gives an order, he gives it once.
-- In moments of high emotion (especially around his mate), his voice drops rather than rises.
+**Speech:** Formal in court, precise, few wasted words. In high emotion his voice drops rather than rises.
 
-**Internal voice (third-person close POV):** measured, observant, with the slight weight of a man who has held a kingdom for five years. The wolf is internal, italicized — not chatty, but present. The wolf speaks rarely, but when it does, the man listens.
+**Internal voice (third-person close POV):** measured, observant, kingly. Wolf internal, italicized, rare and meaningful — does not chatter.
 
 **Physical tells:**
-- Touches the scar on his right palm with his left thumb when thinking — a tic from training his hand back to grip after the injury.
-- Eyes go from amber to gold when the wolf nears the surface. Visible to anyone watching.
-- Goes very still under high emotion. Other men shift their weight. He does not.
+- Thumb to scar on right palm when thinking deliberately.
+- Eyes amber → gold when wolf nears surface.
+- Goes very still under high emotion.
 
 **Habits:**
-- Rises before dawn. Rides at first light. Returns for breakfast.
-- Eats simply — bread, cold meat, fruit. Wine in the evening.
-- Wears black, deep green, and deep wine-red. Avoids ornament.
-- Reads when he can. Histories and field reports, not poetry.
+- Rises before dawn. Rides at first light.
+- Eats simply.
+- Wears black, deep green, deep wine-red. Avoids ornament.
+- Reads histories and field reports.
 
 ---
 
 ### PRINCESS RAINA OF ALDENMERE — The Wolfless Princess
 
-- **Age:** 22
-- **Height/build:** 5'5", slender, soft-boned. Not delicate — she walks the castle grounds at night, she rides her own horse, she carries her own books. But she does not have the muscular build of werewolf women her age, because her wolf has not yet emerged.
-- **Coloring:** Long dark hair, almost black, with a slight wave. Pale skin (she keeps to the indoors during the day mostly, prefers the cool of evening). Grey-blue eyes — a coloring inherited from her late mother, not common in Aldenmere. Small mouth. A scattering of freckles across her nose she has had since childhood and that the stepmother has tried, unsuccessfully, to remove with ointments.
-- **Wolf form:** None yet.
+- **Age:** 22.
+- **Build:** 5'5", slender. Not delicate — she walks gardens at night, rides her own horse, carries her own books. Lacks the muscular build werewolf women her age have, because her wolf has not emerged.
+- **Coloring:** Long dark hair, almost black, slight wave. Pale skin (she keeps to indoors during the day; prefers cool of evening). Grey-blue eyes inherited from her late mother. Freckles across her nose.
+- **Wolf form:** None.
 - **Family:**
-  - **Father:** King Eadric of Aldenmere, 55. Distant. Loves her in his way; sees her in passing.
-  - **Mother:** Queen Elaria, deceased when Raina was 6. (Cause: illness.) Raina remembers her in fragments — her perfume, the sound of her voice, a particular lullaby.
-  - **Stepmother:** Queen Roselle, 44. Married Eadric when Raina was 10. Beautiful, polished, politically sharp. Treats Raina with surface civility, undercutting cruelty in private.
-  - **Stepsister:** Princess Mirella, 23 (one year older than Raina). Roselle's daughter by her first marriage, styled Princess by adoption. Wolf emerged on schedule at 13. Beautiful, accomplished, and trained from childhood to be Queen.
+  - **Father:** Alpha Eadric, 55. Loves her, but is a busy Alpha who has never personally raised a child. He has not parented her in any active sense. Servants and tutors raised her. He sees her in passing.
+  - **Mother:** Luna Elaria, died when Raina was 6. Cause given: illness. (Plant a hint: it may have been more.)
+  - **Stepmother:** Luna Roselle, 44. Married Eadric when Raina was 10. Beautiful, polished, politically sharp.
+  - **Stepsister:** Princess Mirella, 23. Roselle's daughter by her first marriage, styled Princess by adoption. Wolf emerged at 13. Beautiful, accomplished.
 
 **Background:**
-- Raina is the King's only biological child. By blood she is the senior princess. By appearance, accomplishment, and her stepmother's careful arrangement, she has been positioned as the lesser of the two daughters.
-- The mistreatment is not Disney-Cinderella exaggerated. She eats well. She has a chamber of her own. She has tutors, gowns, attendants. But her gowns are last season's, recut. Her jewelry is the simpler pieces. Her tutors are competent but not the renowned masters Mirella receives. Her attendants are loyal to Roselle. Things that belong to her break, go missing, get "accidentally" damaged. When her father gives her something fine, it is gone within a fortnight, and Raina is told she is careless. The King believes this because he does not see the underlying pattern.
-- She is wolfless. Her stepmother has spent twelve years suggesting, quietly and constantly, that this is a sign she is unfit to inherit. The King does not say so out loud — he loves his daughter — but he has begun, slowly, to act as if Mirella will be the one who marries strategically.
+- Senior princess by blood. Positioned as the lesser of the two daughters by twelve years of Roselle's careful covert work.
+- **Father does NOT know what Roselle does.** This is critical. Eadric loves Raina in a distant way and sees her perhaps twice a week in passing. When he sees her, she is fed, clothed, healthy, calm. Nothing visible suggests mistreatment. He has not chosen to ignore it — he has never seen it. Roselle is gracious in public, manipulative in private, and Roselle's victims include several servants who have learned not to speak.
+- The abuse pattern is **coercive control / covert mistreatment.** Modeled on real-world covert emotional abuse: things go missing, last-season's gowns get "found," tutors prove unavailable, servants reassigned, attendants loyal to Roselle, Mirella offered the better opportunities while Raina is gently told she is too delicate or too tired or too unwell for them. Each individual act is small enough to be denied. The cumulative pattern is suffocating. Raina cannot even articulate it cleanly to herself, let alone to her father.
+- Raina is wolfless. Roselle has spent twelve years quietly weaponizing this — implying to Eadric that Raina would be unfit as heir, that Mirella would make a better political match.
+- **Eadric is not a bad father by his own lights.** He simply has never been an active parent. Alphas of this stature do not raise their own children. Tutors and servants do. Eadric believes Raina is in good hands. He has no reason to think otherwise.
 
 **Personality:**
-- Quiet, observant, intelligent. She reads voraciously, including histories and political treatises the stepmother does not know she has.
-- Stoic. Twelve years of small cruelties have taught her not to react.
-- Kind to servants — the ones loyal to her, and the ones not. She does not have the energy for cruelty.
-- Curious. She walks the castle grounds at night because the gardens are beautiful in moonlight and because she likes to be alone where nobody is watching her not have a wolf.
-- A romantic in the safest, smallest way — she has read love stories, she has imagined being loved, she does not seriously expect it.
-- She does NOT feel inferior to her stepsister. She knows what is happening to her. She has not yet decided what to do about it.
+- Quiet, observant, intelligent. Reads voraciously.
+- Stoic — twelve years of small cruelties have taught her not to react publicly.
+- Kind to servants.
+- **A painter.** She mixes her own pigments from trade goods smuggled in from the village in cloak linings. Lapis, beetle-red, ground stone-white. She paints in the gardens at night when she can. She paints flowers, her mother's face from memory, the moon over the river.
+- Cannot articulate what is being done to her in any way her father would understand. The vocabulary of covert abuse does not exist in this world.
+- She has read political treatises her stepmother does not know she has. She is preparing for something — even she doesn't fully know what.
 
-**Speech patterns:**
-- Soft-spoken in public. The court has called her shy. She is not shy; she is careful.
-- Speaks more naturally to servants and to her late mother's old maidservant, Hilde.
-- Reads aloud to herself in her chamber when she is anxious.
-- Bookish vocabulary slips into her speech when she forgets to filter.
-- Curses very rarely. When she does, it is in her dead mother's tongue — a small old word from a region of Aldenmere most courtiers don't recognize.
+**Speech:**
+- Soft in public. Sharper in private.
+- Speaks more naturally to Hilde and to servants loyal to her.
+- Bookish vocabulary slips in when emotional.
+- Says "my father," "my mother," in her POV — possessive family language.
 
-**Internal voice (third-person close POV):** quiet, watchful, slightly literary. Notices everything. Holds her own counsel. The reader hears her cataloguing the room — what was placed where, who looked at whom, what the stepmother said and what the stepmother meant.
+**Internal voice (third-person close POV):** quiet, watchful, slightly literary. Notices everything.
 
 **Physical tells:**
-- When uncertain, she traces the inside of her own wrist with her thumb. (A habit from childhood — her late mother used to hold her wrist when teaching her to write.)
-- When deeply tired or hurt, she goes to the gardens. This is her one indulgence.
-- When forced into court attention, her hands clasp in front of her, perfectly still. The stiller she is, the more uncomfortable she is.
+- Thumb traces inside of own wrist when uncertain (mother's hand teaching her to write).
+- When deeply tired or hurt, goes to the gardens.
+- When forced into court attention, hands clasp in front of her, perfectly still.
 
 **Habits:**
-- Walks the gardens at night, often after midnight. Prefers the rose garden and the western terrace.
-- Reads in the window seat of her chamber.
-- Keeps a small carved wooden box that belonged to her mother, on her writing table.
-- Wears blues and silvers and her mother's old colors. Not bright. Not gaudy. Quietly fine.
+- Walks the gardens at night.
+- Paints in moonlight.
+- Reads in her chamber window seat.
+- Keeps a small carved wooden box that belonged to her mother. (Contents TBD — a planted thread for later chapters.)
+- Wears blues, silvers, her mother's old colors. Quietly fine.
 
 ---
 
@@ -159,96 +183,114 @@ Cassian, who is 32 and unmated, has accepted the invitation knowing perfectly we
 
 | Name | Role | Notes |
 |---|---|---|
-| **King Eadric of Aldenmere** | Raina's father, 55 | Greying auburn hair, broad. Distant father. Loves his daughter but does not parent her. Wants to marry off a daughter to Cassian. Has not yet decided which. Wolf form: brown-grey, aging. |
-| **Queen Roselle** | Stepmother, 44 | Beautiful, polished, sharp. Politically ambitious. Wants Mirella to be the next queen of Tharnholt. Calm cruelty, never raises her voice. Wolf form: red-brown, sleek. |
-| **Princess Mirella** | Stepsister, 23 | Trained from childhood for queenship. Beautiful, accomplished, fluent in two foreign tongues, plays the harp. NOT cartoonishly cruel — colder than that. She believes she deserves the alliance. She is also slightly bored. Wolf form: chestnut. |
-| **Theron Vrennar** | Cassian's Beta + younger brother, 28 | Less reserved than Cassian. Reads people quickly. Loyal absolutely. Watching the Aldenmere court like a hawk. |
-| **Hilde** | Raina's late mother's old maidservant, 60s | The only person in the castle who is fully loyal to Raina. Knew Queen Elaria. Bringings small kindnesses, smuggles books. Will be a recurring confidante. |
-| **Lord Bevan** | Aldenmere's senior court advisor, 50s | Long-serving. Officially neutral, privately suspicious of Roselle. Knew Raina's late mother. |
-| **Sir Adric** | Aldenmere royal guard captain | Loyal to the King first, but observant. Recurring figure. |
-| **Lady Wren** | Mirella's lady-in-waiting, 24 | One of Roselle's instruments. Watches Raina on Roselle's behalf. |
+| **Alpha Eadric of Aldenmere** | Raina's father, 55 | Greying auburn hair, broad. Tired Alpha. Loves his daughter in a distant way. Does not know what Roselle is doing. Has no instinct for parenting. Wolf form: brown-grey, aging. |
+| **Luna Roselle** | Stepmother, 44 | Beautiful, polished, politically sharp. Practitioner of covert emotional control. Never raises her voice. Wants Mirella to marry Cassian. Wolf form: red-brown, sleek. |
+| **Princess Mirella** | Stepsister, 23 | Trained from childhood for queenship. Accomplished, fluent in two foreign tongues, plays the harp. NOT cartoonishly cruel — colder. She believes she deserves the alliance. Sometimes bored with her own life. Wolf: chestnut. |
+| **Theron Vrennar** | Cassian's Beta, younger brother, 28 | Less reserved than Cassian. Reads people quickly. Loyal absolutely. Will be the one who gathers information below stairs. |
+| **Hilde** | Raina's late mother's old maidservant, 60s | The only adult in the keep fully loyal to Raina. Knew Luna Elaria for thirty years. Knows things Raina does not. (Planted thread.) |
+| **Lady Wren** | Mirella's lady-in-waiting, 24 | One of Roselle's instruments. Watches Raina. |
+| **Lord Bevan** | Senior court advisor, 50s | Officially neutral, privately suspicious of Roselle. Knew Luna Elaria. |
+| **Sir Adric** | Royal guard captain | Loyal to the Alpha first. Observant. |
 
 ---
 
 ## PLACES
 
 ### Aldenmere Castle
-A stone fortress on a hill above the capital city. Built in stages over four centuries. The original keep is the oldest part; successive kings added wings, a great hall, a chapel, gardens, stables. The royal apartments are in the south wing. Raina's chamber is in the **north wing**, in what used to be her mother's apartments — Roselle moved her there after marrying the King, claiming the south wing was for the current queen and her daughter. Raina's chamber is beautiful in its way but isolated.
+Stone fortress on a hill above the capital. Royal apartments in the south wing. Raina's chamber is in the **north wing** — her late mother's old apartments. Roselle moved her there when she married Eadric. Isolated.
 
 ### The Royal Gardens
-Extensive. Multiple terraces, formal hedge gardens, a rose walk, fountains, a wilderness section at the edge. The **western terrace** is Raina's favorite — open to the moonlight, with a low stone balustrade overlooking the river valley below. The **rose garden** is in the south. The gardens are technically off-limits at night for security, but Raina has been walking them since she was twelve and the guards have learned to look the other way.
+Multiple terraces, formal hedge gardens, rose walk, fountains, a wilderness section. **Western terrace** is open to the moonlight, with a low stone balustrade overlooking the river valley below. Raina's favorite place.
 
-### The Great Hall (Aldenmere)
-Where state dinners and feasts are held. Long stone hall, high ceiling, banners of the house of Aldenmere on the walls (a silver stag, an old crest from before the unification). Long oak tables; the royal high table on a dais at the far end.
+### The Great Hall
+State dinners and feasts. Stone, high ceiling, silver-stag banners of Aldenmere.
 
-### The Guest Wing (Aldenmere)
-Where the Alpha King of Tharnholt and his retinue are housed during the week-long visit. Across the courtyard from the royal apartments. Has its own small dining hall, sitting rooms, and a private terrace.
+### The Guest Wing
+Where Cassian and his retinue are housed. Across the courtyard from the royal apartments.
 
 ### Tharnholt
-Mentioned, not visited in these chapters. Cassian's kingdom — colder, more northern, mountain-flanked. Theron will reference it.
+Cassian's realm. Northern, mountain-flanked, colder. Not visited in these chapters.
 
 ---
 
-## TIMELINE FOR THE FIRST 10 CHAPTERS
+## TIMELINE OF THE FIRST 10 CHAPTERS
 
-(This is structural, not plot — it explains the scaffold the chapters hang on without prescribing events.)
+Structural scaffold — not plot. The visit is one week. Day 1 = arrival. Day 7 = departure (occurs after chapter 10). Festivities: welcome feast (Day 1 evening), morning run (Day 2), state dinners across the week, a ball (Day 5 or 6).
 
-The Alpha King of Tharnholt is visiting Aldenmere for one week. Day 1 = arrival. Day 7 = departure (does not occur within first 10 chapters). Within this week, several festivities are planned: a welcome feast, a grand hunt, a royal tour, formal dinners, a ball. Roselle and Mirella will arrange to keep Raina away from each major event. Raina becomes increasingly aware of this. Cassian becomes increasingly aware that there is *another daughter* he has not yet met. The 10-chapter arc concludes when Cassian, walking the gardens at night after a dinner, sees a woman on the western terrace in the moonlight and his wolf recognizes her — but she does not see him, and is gone by the time he reaches her.
+Roselle and Mirella systematically arrange to keep Raina out of every major event. Each instance is plausible, deniable, sophisticated.
+
+The 10-chapter arc closes on a night Cassian walks the gardens alone and Raina is also out — perhaps painting, perhaps escaping — and the wind brings him her scent and his wolf detonates and she runs before he can speak to her. He has no face, no name, only her scent burned into memory.
 
 ---
 
-## THREE MAJOR RULES (APPLY ACROSS ALL 10 STORIES)
+## OPEN THREADS PLANTED IN FIRST 10 CHAPTERS (TO RESOLVE LATER, CH 50+)
 
-1. **NO REPETITION** of phrasing, descriptions, or beats. Every chapter freshens its language.
-2. **HE FALLS FIRST, FALLS FAST, FALLS HARD.** Cassian is gone the moment he sees her. Raina, wolfless, does not feel anything corresponding.
-3. **THE MEN ARE NOT SCRUBS.** They are powerful, wealthy, independent. Cassian rules a kingdom, lives in his own royal apartments, has his own household. He does not live with his mother (she's deceased anyway, but the rule stands).
+1. **Raina's mother's box.** Contents undisclosed. Raina sits with it, never opens it on page.
+2. **Luna Elaria's death.** Said to be illness. Hilde knows more. Hint planted but not resolved.
+3. **Why Raina is wolfless.** There is a real reason. No one knows yet — not even Raina.
+4. **Theron's information-gathering.** He has his own reasons for noticing things.
+5. **Roselle's first husband.** Not spoken of. The reason is meaningful.
+6. **Raina reads political treatises in secret.** She is preparing for something she has not named.
+7. **Hilde's withheld knowledge.** She is going to tell Raina something. Not yet.
+8. **Mirella's hidden boredom.** She may be an unlikely ally or a deeper antagonist. Both are possible.
+9. **An old northern word from Raina's dead mother's tongue.** Recognized later by someone unexpected.
+10. **The scar on Cassian's right palm.** Real story comes much later.
 
 ---
 
 ## CONTINUITY GUARDRAILS
 
 **Naming:**
-- Cassian is "the Alpha King," "Alpha Cassian," "King Cassian," or "Cassian" depending on context.
-- Raina is "Princess Raina," "Lady Raina," or "Raina."
-- Mirella, Roselle, Eadric, Theron, Hilde — by first name or title as appropriate.
+- Cassian = "the Alpha," "Alpha Cassian," "Alpha of Tharnholt," "Cassian" informally.
+- Raina = "Princess Raina," "the Princess," "Raina" informally.
+- Mirella, Roselle, Eadric, Theron, Hilde — first name or title as fits.
 
-**Cassian's tell:** thumb to scar on right palm when thinking. Reserve for thoughtful, deliberate moments.
+**Cassian's tells:** thumb to scar on right palm; eyes amber → gold; goes very still.
 
-**Raina's tell:** thumb tracing the inside of her own wrist when uncertain. Reserve for vulnerable moments.
+**Raina's tells:** thumb tracing inside of wrist; going to the gardens; hands clasped perfectly still.
 
-**Wolfless state — careful handling:**
-- It is not played as tragedy. Raina has lived with it for years. She is mostly resigned, occasionally wistful, sometimes wryly amused at how much fuss is made over it.
-- It is NOT a metaphor for any real-world disability. It is a fantasy-biology quirk specific to this world.
-- Other werewolves' attitudes range from kindly curious (Hilde) to politely embarrassed (her father) to coldly weaponizing (Roselle).
+**Wolfless state:**
+- Not played as tragedy. Raina has lived with it for years. Mostly resigned, occasionally wry, sometimes cuttingly aware of it as a weapon used against her.
+- NOT a metaphor for any real-world disability.
+- Other werewolves' reactions range: kind (Hilde), embarrassed (her father), coldly weaponizing (Roselle), barbed (Mirella).
+- When Raina is forced to speak of it to her father, she does so cuttingly — naming it plainly because he will not. "Because I am wolfless, my father." She uses it as a weapon back, not as a wound she shows him.
 
-**Cassian seeing her in the garden — final chapter beat:**
-- He sees her from a distance.
-- The wolf recognizes her before he does.
-- She does not see him.
-- She leaves before he can reach her.
-- He does NOT have a name for her yet.
-- This is the 10-chapter cliff. The 200-chapter book begins with him hunting for her name.
+**Recognition scene specifications:**
+- Garden, night, moonlight.
+- Cassian sees a silhouette only. Woman. Dark hair. Cloak. No face visible.
+- Wolf senses something off-or-right.
+- Cassian steps closer.
+- Wind shifts. Scent arrives.
+- `*MATE.*` — wolf detonates inside.
+- She runs in that exact moment.
+- He is left in the garden, scent fading, knowing he has found his mate and that he has nothing to identify her by except a scent that should have been stronger.
+- He does NOT know her name.
+- He does NOT know her face.
 
 ---
 
 ## NO-GO LIST
 
-- **Do NOT write Disney-Cinderella cruelty.** No locked-in-the-attic, no scrubbing-floors-in-rags, no comic stepsister buffoonery. The cruelty is sophisticated, plausible, and deniable.
-- **Do NOT make Raina pitiable.** She is sad in the way a thoughtful person is sad in an unfair situation; she is not broken. She has dignity, intelligence, and reserves of strength even she does not yet know about.
-- **Do NOT let Cassian know her name in chapter 10.** He does not. He assumes she may be a servant or a visiting noblewoman. This is the entire engine of the early plot.
-- **Do NOT use anachronisms.** No modern idioms in dialogue. No "okay," no "alright," no "yeah." Vocabulary should feel medieval-flavored but readable — think Diana Gabaldon or Naomi Novik for tone, not Tolkien-archaic.
-- **Do NOT make Mirella one-dimensional.** She is the antagonist's daughter but she is a person — sometimes bored, sometimes amused, sometimes briefly kind in ways that surprise even her.
-- **Do NOT info-dump the world's politics.** The reader does not need to know how Aldenmere and Tharnholt's economies work. Sketch enough to feel grounded, no more.
+- **Do NOT** show the father as complicit. He is ignorant, not negligent-on-purpose. Show his ignorance through ordinary distraction.
+- **Do NOT** write Disney-cruelty scenes. The abuse is covert, sophisticated, deniable. Each scene's cruelty must be one Roselle could explain away.
+- **Do NOT** make Raina pitiable. She is sad in the way an intelligent person is sad in an unfair situation. She has dignity, intelligence, and reserves of strength.
+- **Do NOT** have Cassian asking about Raina, looking for her, thinking about her, before the garden. He notes her absence at the receiving. He accepts the lie. He moves on. The garden recognition comes cold.
+- **Do NOT** let Cassian see Raina's face in the garden. Silhouette and scent only.
+- **Do NOT** info-dump titles or political vocabulary. Use Princess, Luna, Alpha naturally without explanation paragraphs.
+- **Do NOT** exceed 450 words per chapter.
+- **Do NOT** use anachronisms ("okay," "yeah," "alright").
+- **Do NOT** make Mirella one-dimensional.
 
 ---
 
 ## VOICE NOTES FOR PROSE
 
-- Third-person close POV. Alternate Cassian and Raina chapters; or mix within chapters when the cut serves drama. Decide per chapter.
-- Sensory specificity: candlelight, wood smoke, the weight of brocade, the cold of stone. Medieval texture, not medieval lecture.
+- Third-person close POV. Alternate Cassian and Raina chapters, or mix within when the cut serves drama.
+- Sensory specificity: candlelight, wood smoke, the weight of brocade, the cold of stone.
 - Dialogue with action beats, not "she said sadly."
-- The wolf is internal, italicized, surfaces rarely and meaningfully in Cassian's chapters.
-- Raina's chapters have a slightly more bookish, observant rhythm than Cassian's.
+- Wolf internal, italicized, surfaces rarely and meaningfully — only Cassian has a wolf.
+- Raina's chapters have a slightly more bookish, observant rhythm.
+- **DRAMA every chapter.** Confrontation, indignity, near-miss, secret, betrayal, or escalation.
 
 ---
 

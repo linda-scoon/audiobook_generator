@@ -21,6 +21,28 @@ stories/<story-slug>/
 
 `chapters/` files preserve original story text split by chapter. `narration/` files contain the same story content with audio tags such as `[NARRATOR]`, `[FMC]`, `[MMC: low, controlled]`, `[WOLF_OR_MONSTER]`, and `[SFX: sound effect description]`.
 
+## Recommended one-command wrapper
+
+If you want one command that checks status, fills missing reusable voice IDs when needed, validates voices, and then runs the build, use the wrapper script at `scripts/run_audio.sh`.
+
+The wrapper is intended to reduce setup friction while still protecting against unnecessary API usage:
+
+- It requires `--story` unless you explicitly pass `--all-stories`, so you do not accidentally process every story.
+- It does not source `.env`; the `./audio` CLI loads simple `.env` values itself.
+- It skips voice setup for `--prepare-only`, because no ElevenLabs MP3 generation is needed.
+- It runs `voices auto-assign` only when required voice IDs are missing or blank.
+- It validates only the selected story when `--story` is provided.
+- It keeps the built-in review pause unless you pass `--yes`.
+- It prints the exact commands it will run before it runs them.
+
+### Wrapper command format
+
+Run from the repository root:
+
+```bash
+bash scripts/run_audio.sh --mode prepared|unprepared|auto --story STORY_SLUG [options]
+bash scripts/run_audio.sh --mode prepared|unprepared|auto --all-stories [options]
+
 ## Root commands
 
 All commands are intended to be run from the repository root:
