@@ -25,14 +25,14 @@ class AudioWorkflowTests(unittest.TestCase):
         self.assertIn("Preparation mode required", str(ctx.exception))
 
     def test_detects_prepared_script(self):
-        text = "[NARRATOR]\nThe rain fell.\n\n[SFX: thunder]\n\n[ELENA: worried]\nWe should go.\n"
+        text = "[NARRATOR]\nThe rain fell.\n\n[SFX: thunder]\n\n[FMC: worried]\nWe should go.\n"
         detection = aw.detect_prepared_script(text)
         self.assertTrue(detection.prepared)
         self.assertGreaterEqual(detection.labelled_blocks, 3)
 
     def test_unprepared_mode_refuses_already_prepared_without_api_call(self):
         chapter = self.story / "chapters" / "chapter_001.md"
-        chapter.write_text("[NARRATOR]\nThe rain fell.\n\n[ELENA]\nWe should go.\n", encoding="utf-8")
+        chapter.write_text("[NARRATOR]\nThe rain fell.\n\n[FMC]\nWe should go.\n", encoding="utf-8")
         story = aw.Story("silver-footfalls", self.story)
         with patch("audio_workflow.AIScriptPreparer.prepare") as mocked_prepare:
             with self.assertRaises(aw.WorkflowError):
@@ -41,7 +41,7 @@ class AudioWorkflowTests(unittest.TestCase):
 
     def test_auto_copies_prepared_without_api_call(self):
         chapter = self.story / "chapters" / "chapter_001.md"
-        chapter.write_text("[NARRATOR]\nThe rain fell.\n\n[ELENA]\nWe should go.\n", encoding="utf-8")
+        chapter.write_text("[NARRATOR]\nThe rain fell.\n\n[FMC]\nWe should go.\n", encoding="utf-8")
         story = aw.Story("silver-footfalls", self.story)
         with patch("audio_workflow.AIScriptPreparer.prepare") as mocked_prepare:
             used_ai = aw.prepare_story(story, "auto")
@@ -54,7 +54,7 @@ class AudioWorkflowTests(unittest.TestCase):
         chapter.write_text("The rain fell. Elena said, We should go.", encoding="utf-8")
         story = aw.Story("silver-footfalls", self.story)
         result = AIPreparationResult(
-            script="[NARRATOR]\nThe rain fell.\n\n[ELENA]\nWe should go.",
+            script="[NARRATOR]\nThe rain fell.\n\n[FMC]\nWe should go.",
             provider="openai",
             model="test-model",
         )
@@ -76,6 +76,46 @@ class AudioWorkflowTests(unittest.TestCase):
         story = aw.Story("silver-footfalls", self.story)
         statuses = aw.status_for_story(story)
         self.assertEqual(statuses[0].next_command, "audio prepare silver-footfalls --auto")
+
+    def test_unknown_character_label_is_rejected(self):
+        script = self.story / "narration" / "chapter_001_audio_script.md"
+        script.write_text("[NARRATOR]\nRain fell.\n\n[ELENA]\nGo now.\n", encoding="utf-8")
+        with self.assertRaises(aw.WorkflowError) as ctx:
+            aw.validate_prepared_script(script)
+        self.assertIn("unknown speaker role", str(ctx.exception))
+
+    def test_blank_voice_roles_stop_before_generation_request(self):
+        script = self.story / "narration" / "chapter_001_audio_script.md"
+        script.write_text("[NARRATOR]\nRain fell.\n", encoding="utf-8")
+        (self.root / "config").mkdir()
+        aw.save_voice_roles(aw.default_voice_roles(), self.root)
+        story = aw.Story("silver-footfalls", self.story)
+        with patch("audio_workflow.Path.cwd", return_value=self.root), patch.dict("os.environ", {"ELEVENLABS_API_KEY": "test"}, clear=False):
+            with patch("audio_workflow.elevenlabs_tts") as mocked_tts:
+                with self.assertRaises(aw.WorkflowError) as ctx:
+                    aw.generate_story(story)
+        self.assertIn("blank ElevenLabs voice ID", str(ctx.exception))
+        mocked_tts.assert_not_called()
+
+    def test_auto_assign_preserves_existing_voice_ids(self):
+        (self.root / "config").mkdir()
+        roles = aw.default_voice_roles()
+        roles["NARRATOR"] = "saved-narrator"
+        aw.save_voice_roles(roles, self.root)
+        voices = [{"voice_id": "female-1", "name": "Warm female", "labels": {"gender": "female"}}]
+        with patch.dict("os.environ", {"ELEVENLABS_API_KEY": "test"}, clear=False):
+            with patch("audio_workflow.elevenlabs_list_voices", return_value=voices):
+                aw.auto_assign_voice_roles(self.root)
+        updated = aw.load_voice_roles(self.root)
+        self.assertEqual(updated["NARRATOR"], "saved-narrator")
+        self.assertEqual(updated["FMC"], "female-1")
+
+    def test_preparation_prompt_file_is_loaded(self):
+        from ai_script_preparer import load_preparation_prompt
+
+        prompt = self.root / "prompt.md"
+        prompt.write_text("Use role labels only.", encoding="utf-8")
+        self.assertEqual(load_preparation_prompt(prompt), "Use role labels only.")
 
 
 if __name__ == "__main__":

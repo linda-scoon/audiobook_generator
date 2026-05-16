@@ -23,8 +23,28 @@ from ai_script_preparer import AIScriptPreparer, PreparationError
 SUPPORTED_TEXT_EXTENSIONS = (".md", ".txt", ".docx")
 CHAPTER_RE = re.compile(r"^chapter_(\d{3})\.(md|txt|docx)$", re.IGNORECASE)
 NARRATION_RE = re.compile(r"^chapter_(\d{3})_audio_script\.md$", re.IGNORECASE)
-HEADER_RE = re.compile(r"^\[(NARRATOR|SFX\s*:[^\]]+|[A-Z][A-Z0-9_ '\-]*(?:\s*:[^\]]+)?)\]\s*$")
-SPEAKER_HEADER_RE = re.compile(r"^\[(NARRATOR|[A-Z][A-Z0-9_ '\-]*(?:\s*:[^\]]+)?)\]\s*$")
+REQUIRED_VOICE_ROLES = (
+    "NARRATOR",
+    "FMC",
+    "MMC",
+    "DEFAULT_FEMALE",
+    "DEFAULT_MALE",
+    "ADULT_FEMALE_1",
+    "ADULT_FEMALE_2",
+    "ADULT_MALE_1",
+    "ADULT_MALE_2",
+    "OLDER_FEMALE",
+    "OLDER_MALE",
+    "TEEN_FEMALE",
+    "TEEN_MALE",
+    "CHILD_FEMALE",
+    "CHILD_MALE",
+    "WOLF_OR_MONSTER",
+)
+VOICE_ROLE_SET = set(REQUIRED_VOICE_ROLES)
+ROLE_LABEL_RE = re.compile(r"^[A-Z][A-Z0-9_]*(?:\s*:[^\]]+)?$")
+HEADER_RE = re.compile(r"^\[(SFX\s*:[^\]]+|[A-Z][A-Z0-9_]*(?:\s*:[^\]]+)?)\]\s*$")
+SPEAKER_HEADER_RE = re.compile(r"^\[([A-Z][A-Z0-9_]*)(?:\s*:[^\]]+)?\]\s*$")
 CHAPTER_HEADING_RE = re.compile(r"(?im)^\s*(chapter\s+(?:\d+|[ivxlcdm]+|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)|prologue|epilogue)\b.*$")
 
 
@@ -181,14 +201,105 @@ def read_docx(path: Path) -> str:
     return result
 
 
+
+def voice_roles_path(repo_root: Path | None = None) -> Path:
+    return (repo_root or Path.cwd()) / "config" / "voice_roles.json"
+
+
+def default_voice_roles() -> dict[str, str]:
+    return {role: "" for role in REQUIRED_VOICE_ROLES}
+
+
+def load_voice_roles(repo_root: Path | None = None) -> dict[str, str]:
+    path = voice_roles_path(repo_root)
+    if not path.exists():
+        raise WorkflowError(
+            f"Voice role configuration is missing: {path}\n"
+            "Create it with required reusable role labels, or run: audio voices auto-assign"
+        )
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise WorkflowError(f"Voice role configuration is not valid JSON: {path}") from exc
+    if not isinstance(data, dict):
+        raise WorkflowError(f"Voice role configuration must be a JSON object: {path}")
+    return {str(key): str(value).strip() for key, value in data.items()}
+
+
+def save_voice_roles(roles: dict[str, str], repo_root: Path | None = None) -> None:
+    ordered = {role: roles.get(role, "") for role in REQUIRED_VOICE_ROLES}
+    extra = {key: roles[key] for key in sorted(roles) if key not in ordered}
+    atomic_write_text(voice_roles_path(repo_root), json.dumps({**ordered, **extra}, indent=2) + "\n")
+
+
+def normalize_role_label(label: str) -> str:
+    inner = label.strip()[1:-1].strip() if label.strip().startswith("[") and label.strip().endswith("]") else label.strip()
+    return inner.split(":", 1)[0].strip().upper()
+
+
+def is_sfx_label(label: str) -> bool:
+    return label.strip().upper().startswith("[SFX")
+
+
+def validate_voice_roles_config(roles: dict[str, str], require_non_empty: bool = True) -> None:
+    missing = [role for role in REQUIRED_VOICE_ROLES if role not in roles]
+    if missing:
+        raise WorkflowError("config/voice_roles.json is missing required role(s): " + ", ".join(missing))
+    if require_non_empty:
+        blank = [role for role in REQUIRED_VOICE_ROLES if not roles.get(role, "").strip()]
+        if blank:
+            raise WorkflowError(
+                "config/voice_roles.json has blank ElevenLabs voice ID(s): "
+                + ", ".join(blank)
+                + "\nFill them manually from `audio voices list` or run `audio voices auto-assign`."
+            )
+
+
+def unknown_speaker_labels_from_text(text: str) -> list[tuple[int, str]]:
+    unknown: list[tuple[int, str]] = []
+    for line_number, line in enumerate(text.splitlines(), start=1):
+        stripped = line.strip()
+        if not (stripped.startswith("[") and stripped.endswith("]")):
+            continue
+        inner = stripped[1:-1].strip()
+        if inner.upper().startswith("SFX:"):
+            continue
+        if not ROLE_LABEL_RE.match(inner):
+            continue
+        role = inner.split(":", 1)[0].strip().upper()
+        if role not in VOICE_ROLE_SET:
+            unknown.append((line_number, stripped))
+    return unknown
+
+
+def unknown_speaker_labels(path: Path) -> list[tuple[int, str]]:
+    return unknown_speaker_labels_from_text(read_story_text(path))
+
+
+def validate_script_voice_labels(path: Path) -> None:
+    unknown = unknown_speaker_labels(path)
+    if unknown:
+        examples = "\n".join(f"- {path}:{line}: {label}" for line, label in unknown[:10])
+        raise WorkflowError(
+            "Narration script contains unknown speaker role label(s). Use reusable voice-role labels only; "
+            "character-name voice mapping is not supported.\n"
+            f"{examples}"
+        )
+
+
 def detect_prepared_script(text: str, minimum_blocks: int = 2) -> ScriptDetection:
     labelled = 0
     speakable = 0
     for line in text.splitlines():
         stripped = line.strip()
-        if HEADER_RE.match(stripped):
+        if not HEADER_RE.match(stripped):
+            continue
+        if is_sfx_label(stripped):
             labelled += 1
-        if SPEAKER_HEADER_RE.match(stripped) and not stripped.upper().startswith("[SFX"):
+            continue
+        role = normalize_role_label(stripped)
+        if role in VOICE_ROLE_SET:
+            labelled += 1
             speakable += 1
     return ScriptDetection(prepared=labelled >= minimum_blocks and speakable >= 1, labelled_blocks=labelled, speakable_blocks=speakable)
 
@@ -196,11 +307,12 @@ def detect_prepared_script(text: str, minimum_blocks: int = 2) -> ScriptDetectio
 def validate_prepared_script(path: Path) -> ScriptDetection:
     text = read_story_text(path)
     detection = detect_prepared_script(text, minimum_blocks=1)
+    validate_script_voice_labels(path)
     if detection.labelled_blocks < 1 or detection.speakable_blocks < 1:
         raise WorkflowError(
             "Prepared narration script appears invalid.\n\n"
             f"File: {path}\n\n"
-            "Expected labelled blocks such as [NARRATOR], [CHARACTER_NAME], [CHARACTER_NAME: emotional direction], "
+            "Expected labelled blocks such as [NARRATOR], [FMC], [MMC: emotional direction], "
             f"or [SFX: sound effect description]. Found {detection.labelled_blocks} valid labelled blocks."
         )
     return detection
@@ -389,11 +501,15 @@ def require_mode(mode: str | None, command: str) -> str:
     return mode
 
 
-def prepare_story(story: Story, mode: str, force: bool = False) -> bool:
+def prepare_story(story: Story, mode: str, force: bool = False, chapter: int | None = None) -> bool:
     ensure_story_dirs(story)
     split_source_if_needed(story, force=force)
     sources = chapter_sources(story)
+    if chapter is not None:
+        sources = [source for source in sources if source.number == chapter]
     if not sources:
+        if chapter is not None:
+            raise WorkflowError(f"Chapter {chapter:03d} was not found for {story.slug}. Add chapters/chapter_{chapter:03d}.md or source material first.")
         raise WorkflowError(f"No chapter files or source manuscript found for {story.slug}. Add files to chapters/ or source/.")
     used_ai = False
     for source in sources:
@@ -436,6 +552,14 @@ def prepare_story(story: Story, mode: str, force: bool = False) -> bool:
                 model = result.model
                 used_ai = True
         output_detection = detect_prepared_script(script)
+        unknown_labels = unknown_speaker_labels_from_text(script)
+        if unknown_labels:
+            examples = "\n".join(f"- prepared output line {line}: {label}" for line, label in unknown_labels[:10])
+            raise WorkflowError(
+                f"Prepared output for {story.slug} chapter_{source.number:03d} uses unknown voice-role labels. "
+                "Use reusable role labels only, not character names.\n"
+                f"{examples}"
+            )
         if not output_detection.prepared:
             log = story.path / "logs" / f"chapter_{source.number:03d}_preparation_error.log"
             atomic_write_text(log, script)
@@ -480,10 +604,14 @@ def parse_script_blocks(text: str) -> list[tuple[str, str]]:
     return [(label, "\n".join(lines).strip()) for label, lines in blocks if "\n".join(lines).strip()]
 
 
-def generate_story(story: Story, force: bool = False) -> None:
+def generate_story(story: Story, force: bool = False, chapter: int | None = None) -> None:
     ensure_story_dirs(story)
     numbers = narration_numbers(story)
+    if chapter is not None:
+        numbers = [number for number in numbers if number == chapter]
     if not numbers:
+        if chapter is not None:
+            raise WorkflowError(f"Cannot generate audio for {story.slug} chapter_{chapter:03d} because its prepared narration script was not found.")
         raise WorkflowError(
             f"Cannot generate audio for {story.slug} because no prepared narration scripts were found in {story.path / 'narration'}.\n"
             f"Run: audio prepare {story.slug} --auto"
@@ -499,22 +627,26 @@ def generate_story(story: Story, force: bool = False) -> None:
         pending.append(number)
     if not pending:
         return
+    roles = load_voice_roles()
+    validate_voice_roles_config(roles, require_non_empty=True)
     api_key = os.environ.get("ELEVENLABS_API_KEY")
     if not api_key:
         raise WorkflowError("Cannot generate MP3 because ELEVENLABS_API_KEY is not set.")
-    voice_id = os.environ.get("ELEVENLABS_VOICE_ID") or os.environ.get("ELEVENLABS_NARRATOR_VOICE_ID")
-    if not voice_id:
-        raise WorkflowError("Cannot generate MP3 because ELEVENLABS_VOICE_ID is not set.")
     for number in pending:
         script = narration_path(story, number)
         target = mp3_path(story, number)
         text = read_story_text(script)
         blocks = parse_script_blocks(text)
-        speakable = [body for label, body in blocks if not label.upper().startswith("[SFX") and body.strip()]
+        speakable = [(normalize_role_label(label), body) for label, body in blocks if not is_sfx_label(label) and body.strip()]
         if not speakable:
             raise WorkflowError(f"No speakable narration blocks found in {script}.")
         audio = bytearray()
-        for body in speakable:
+        used_voice_ids: dict[str, str] = {}
+        for role, body in speakable:
+            voice_id = roles.get(role, "").strip()
+            if not voice_id:
+                raise WorkflowError(f"Role {role} has no ElevenLabs voice ID in config/voice_roles.json. No generation request was sent.")
+            used_voice_ids[role] = voice_id
             audio.extend(elevenlabs_tts(body, api_key, voice_id))
         atomic_write_bytes(target, bytes(audio))
         meta = {
@@ -523,7 +655,7 @@ def generate_story(story: Story, force: bool = False) -> None:
             "script_sha256": sha256_file(script),
             "mp3_path": str(target.relative_to(story.path)),
             "mp3_sha256": sha256_file(target),
-            "voice_id": voice_id,
+            "voice_roles": used_voice_ids,
             "speakable_blocks": len(speakable),
         }
         atomic_write_text(generation_metadata_path(story, number), json.dumps(meta, indent=2) + "\n")
@@ -532,6 +664,8 @@ def generate_story(story: Story, force: bool = False) -> None:
 
 
 def elevenlabs_tts(text: str, api_key: str, voice_id: str) -> bytes:
+    if not voice_id or not voice_id.strip():
+        raise WorkflowError("Refusing to call ElevenLabs Text-to-Speech with a blank voice_id.")
     payload = {
         "text": text,
         "model_id": os.environ.get("ELEVENLABS_MODEL_ID", "eleven_multilingual_v2"),
@@ -553,6 +687,134 @@ def elevenlabs_tts(text: str, api_key: str, voice_id: str) -> bytes:
         raise WorkflowError(f"Could not reach ElevenLabs: {exc.reason}") from exc
 
 
+
+def elevenlabs_list_voices(api_key: str) -> list[dict]:
+    request = urllib.request.Request(
+        "https://api.elevenlabs.io/v1/voices",
+        headers={"xi-api-key": api_key, "Accept": "application/json"},
+        method="GET",
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=60) as response:
+            data = json.loads(response.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        body = exc.read().decode("utf-8", errors="replace")
+        raise WorkflowError(f"ElevenLabs returned HTTP {exc.code}: {body}") from exc
+    except urllib.error.URLError as exc:
+        raise WorkflowError(f"Could not reach ElevenLabs: {exc.reason}") from exc
+    voices = data.get("voices", [])
+    if not isinstance(voices, list):
+        raise WorkflowError("ElevenLabs List Voices response did not contain a voices list.")
+    return [voice for voice in voices if isinstance(voice, dict)]
+
+
+def require_elevenlabs_api_key() -> str:
+    api_key = os.environ.get("ELEVENLABS_API_KEY")
+    if not api_key:
+        raise WorkflowError("ELEVENLABS_API_KEY is required for this ElevenLabs voice command.")
+    return api_key
+
+
+def voice_search_text(voice: dict) -> str:
+    labels = voice.get("labels") if isinstance(voice.get("labels"), dict) else {}
+    values = [str(voice.get("name", "")), str(voice.get("category", "")), str(voice.get("description", ""))]
+    values.extend(str(value) for value in labels.values())
+    return " ".join(values).lower()
+
+
+def choose_voice_for_role(role: str, voices: list[dict]) -> str:
+    if not voices:
+        raise WorkflowError("ElevenLabs returned no available voices for this account.")
+    role_terms = {
+        "NARRATOR": ["narrat", "story", "warm"],
+        "FMC": ["female", "young", "warm"],
+        "MMC": ["male", "deep", "warm"],
+        "DEFAULT_FEMALE": ["female"],
+        "DEFAULT_MALE": ["male"],
+        "ADULT_FEMALE_1": ["female", "adult"],
+        "ADULT_FEMALE_2": ["female", "middle"],
+        "ADULT_MALE_1": ["male", "adult"],
+        "ADULT_MALE_2": ["male", "middle"],
+        "OLDER_FEMALE": ["female", "old"],
+        "OLDER_MALE": ["male", "old"],
+        "TEEN_FEMALE": ["female", "young"],
+        "TEEN_MALE": ["male", "young"],
+        "CHILD_FEMALE": ["female", "child"],
+        "CHILD_MALE": ["male", "child"],
+        "WOLF_OR_MONSTER": ["monster", "creature", "deep", "gravel"],
+    }
+    terms = role_terms.get(role, [])
+    scored: list[tuple[int, str]] = []
+    for voice in voices:
+        voice_id = str(voice.get("voice_id", "")).strip()
+        if not voice_id:
+            continue
+        text = voice_search_text(voice)
+        score = sum(1 for term in terms if term in text)
+        wants_female = role == "FMC" or "FEMALE" in role
+        wants_male = role == "MMC" or ("MALE" in role and "FEMALE" not in role)
+        if wants_female:
+            score += 1 if "female" in text else 0
+        elif wants_male:
+            score += 1 if "male" in text and "female" not in text else 0
+        scored.append((score, voice_id))
+    if not scored:
+        raise WorkflowError("ElevenLabs voices did not include usable voice_id values.")
+    scored.sort(key=lambda item: item[0], reverse=True)
+    return scored[0][1]
+
+
+def print_voice_list() -> None:
+    voices = elevenlabs_list_voices(require_elevenlabs_api_key())
+    for voice in voices:
+        print(f"{voice.get('name', '(unnamed)')}\t{voice.get('voice_id', '')}")
+
+
+def auto_assign_voice_roles(repo_root: Path) -> None:
+    voices = elevenlabs_list_voices(require_elevenlabs_api_key())
+    try:
+        roles = load_voice_roles(repo_root)
+    except WorkflowError:
+        roles = default_voice_roles()
+    validate_voice_roles_config({**default_voice_roles(), **roles}, require_non_empty=False)
+    changed = False
+    for role in REQUIRED_VOICE_ROLES:
+        if roles.get(role, "").strip():
+            continue
+        roles[role] = choose_voice_for_role(role, voices)
+        changed = True
+    save_voice_roles(roles, repo_root)
+    if changed:
+        print(f"Saved ElevenLabs voice role assignments to {voice_roles_path(repo_root)}")
+    else:
+        print(f"All required voice roles already had saved IDs in {voice_roles_path(repo_root)}")
+
+
+def validate_voices_workflow(repo_root: Path, stories: Iterable[Story]) -> None:
+    roles = load_voice_roles(repo_root)
+    validate_voice_roles_config(roles, require_non_empty=True)
+    for story in stories:
+        for number in narration_numbers(story):
+            validate_prepared_script(narration_path(story, number))
+    print("Voice roles and narration labels are valid.")
+
+
+def preview_voice_roles(repo_root: Path, yes: bool = False) -> None:
+    if not yes:
+        raise WorkflowError(
+            "Voice preview spends ElevenLabs generation credits. Re-run with: audio voices preview --yes"
+        )
+    roles = load_voice_roles(repo_root)
+    validate_voice_roles_config(roles, require_non_empty=True)
+    api_key = require_elevenlabs_api_key()
+    preview_dir = repo_root / "config" / "voice_previews"
+    for role in REQUIRED_VOICE_ROLES:
+        sample = f"{role.replace('_', ' ').title()} voice preview."
+        audio = elevenlabs_tts(sample, api_key, roles[role])
+        atomic_write_bytes(preview_dir / f"{role}.mp3", audio)
+    print(f"Saved voice previews to {preview_dir}")
+
+
 def print_status(stories: Iterable[Story]) -> None:
     for story in stories:
         print(f"\nStory: {story.slug}")
@@ -565,8 +827,8 @@ def print_status(stories: Iterable[Story]) -> None:
             )
 
 
-def build_story(story: Story, mode: str, yes: bool = False, force: bool = False) -> None:
-    used_ai = prepare_story(story, mode, force=force)
+def build_story(story: Story, mode: str, yes: bool = False, force: bool = False, chapter: int | None = None) -> None:
+    used_ai = prepare_story(story, mode, force=force, chapter=chapter)
     if used_ai and not yes:
         print(
             f"AI preparation completed for {story.slug}. Review scripts in {story.path / 'narration'} before generating audio.\n"
@@ -574,7 +836,7 @@ def build_story(story: Story, mode: str, yes: bool = False, force: bool = False)
             f"To continue without review next time: audio build {story.slug} --{mode} --yes"
         )
         return
-    generate_story(story, force=force)
+    generate_story(story, force=force, chapter=chapter)
 
 
 def make_parser() -> argparse.ArgumentParser:
@@ -588,12 +850,22 @@ def make_parser() -> argparse.ArgumentParser:
             modes.add_argument("--prepared", action="store_true", help="Inputs already contain audio-drama tags; no AI preparation call.")
             modes.add_argument("--unprepared", action="store_true", help="Inputs are prose and require AI preparation.")
             modes.add_argument("--auto", action="store_true", help="Inspect locally; call AI only for prose inputs.")
+            sub.add_argument("--prepare-only", action="store_true", help="Prepare narration scripts only; never generate MP3 audio.")
         if command in {"prepare", "generate", "build"}:
             sub.add_argument("--force", action="store_true", help="Regenerate existing derived files.")
+            sub.add_argument("--chapter", type=int, help="Limit work to one chapter number, e.g. --chapter 1.")
         if command == "build":
             sub.add_argument("--yes", action="store_true", help="Skip the review stop after AI preparation.")
-    return parser
 
+    voices = subparsers.add_parser("voices", help="Manage reusable ElevenLabs voice-role assignments.")
+    voice_subparsers = voices.add_subparsers(dest="voices_command", required=True)
+    voice_subparsers.add_parser("list", help="List available ElevenLabs voice names and IDs without generating audio.")
+    voice_subparsers.add_parser("auto-assign", help="Fill blank reusable role IDs from ElevenLabs List Voices without generating audio.")
+    validate = voice_subparsers.add_parser("validate", help="Validate voice_roles.json and narration speaker labels without generating audio.")
+    validate.add_argument("story", nargs="?", help="Optional story slug/title/folder to validate. Omit for all stories.")
+    preview = voice_subparsers.add_parser("preview", help="Generate short paid preview MP3s for each reusable role.")
+    preview.add_argument("--yes", action="store_true", help="Confirm that preview generation spends ElevenLabs credits.")
+    return parser
 
 def selected_mode(args: argparse.Namespace) -> str | None:
     if getattr(args, "prepared", False):
@@ -610,20 +882,37 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     repo_root = Path.cwd()
     try:
+        if args.command == "voices":
+            if args.voices_command == "list":
+                print_voice_list()
+            elif args.voices_command == "auto-assign":
+                auto_assign_voice_roles(repo_root)
+            elif args.voices_command == "validate":
+                stories = resolve_stories(repo_root, args.story)
+                validate_voices_workflow(repo_root, stories)
+            elif args.voices_command == "preview":
+                preview_voice_roles(repo_root, yes=args.yes)
+            return 0
+
         stories = resolve_stories(repo_root, args.story)
         if args.command == "status":
             print_status(stories)
         elif args.command == "prepare":
             mode = require_mode(selected_mode(args), "prepare")
             for story in stories:
-                prepare_story(story, mode, force=args.force)
+                prepare_story(story, mode, force=args.force, chapter=args.chapter)
         elif args.command == "generate":
             for story in stories:
-                generate_story(story, force=args.force)
+                generate_story(story, force=args.force, chapter=args.chapter)
         elif args.command == "build":
-            mode = require_mode(selected_mode(args), "build")
-            for story in stories:
-                build_story(story, mode, yes=args.yes, force=args.force)
+            if getattr(args, "prepare_only", False):
+                mode = require_mode(selected_mode(args), "build")
+                for story in stories:
+                    prepare_story(story, mode, force=args.force, chapter=args.chapter)
+            else:
+                mode = require_mode(selected_mode(args), "build")
+                for story in stories:
+                    build_story(story, mode, yes=args.yes, force=args.force, chapter=args.chapter)
         return 0
     except (WorkflowError, PreparationError) as exc:
         print(f"Error: {exc}", file=sys.stderr)
