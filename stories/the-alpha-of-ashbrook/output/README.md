@@ -1,9 +1,9 @@
 # Generated audio output
 
-Generated MP3 files and generation metadata are grouped by story slug. Chapter files live directly inside each story folder, for example:
+Generated MP3 files and generation metadata live directly in this story output folder, for example:
 
-- `the-alpha-of-ashbrook/chapter_001.mp3`
-- `the-alpha-of-ashbrook/chapter_001_metadata.json`
-- `the-alpha-of-ashbrook/chapter_002.mp3`
+- `chapter_001.mp3`
+- `chapter_001_metadata.json`
+- `chapter_002.mp3`
 
-The generator intentionally avoids per-chapter folders to keep the output tree shallow. Existing MP3s are not overwritten unless `--force` is passed.
+The generator intentionally avoids per-story and per-chapter folders to keep the output tree shallow. Existing MP3s are not overwritten unless `--force` is passed.
