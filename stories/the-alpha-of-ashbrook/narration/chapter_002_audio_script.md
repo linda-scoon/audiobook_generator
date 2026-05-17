@@ -2,11 +2,10 @@
 
 ## Polite Is a Weapon
 
-<!-- Audio-prepared script: story text preserved; tags added for generation. -->
 
 [SFX: quiet yoga studio ambience; soft breathing]
 
-[FMC]
+[FMC: warm, teasing, instructive]
 "Breathe in for four. Hold for two. Out for six. Anya, you're holding for ten. Stop showing off."
 
 [NARRATOR]
@@ -20,7 +19,7 @@ Elena loved this hour. She loved it more than she loved most things.
 [NARRATOR]
 When the timer chimed, the women rolled themselves up slowly — Tomás moving between them in his quiet way, offering hands, offering pillows. Anya rolled onto her back and stared at the ceiling.
 
-[ADULT_FEMALE_1]
+[ADULT_FEMALE_1: teasing, skeptical]
 "Coach,"
 
 [NARRATOR]
@@ -29,22 +28,22 @@ When the timer chimed, the women rolled themselves up slowly — Tomás moving b
 [ADULT_FEMALE_1]
 "Are you going today?"
 
-[FMC]
+[FMC: steady]
 "I'm going."
 
-[ADULT_FEMALE_1]
+[ADULT_FEMALE_1: teasing, skeptical]
 "You'll wait three hours just to talk for two minutes."
 
-[FMC]
+[FMC: steady]
 "I'm going."
 
-[ADULT_FEMALE_1]
+[ADULT_FEMALE_1: teasing, skeptical]
 "And he'll say no."
 
 [NARRATOR]
 Elena pulled the green dress from the hook by the office door and held it up to the light. There was a faint stain on the hem from the last meeting. She would have to sponge it out.
 
-[FMC]
+[FMC: lightly hopeful]
 "Maybe he'll say yes,"
 
 [NARRATOR]
@@ -53,10 +52,10 @@ Elena pulled the green dress from the hook by the office door and held it up to 
 [NARRATOR]
 Anya snorted. 
 
-[ADULT_FEMALE_1]
+[ADULT_FEMALE_1: amused, skeptical]
 "Mija. You believe that?"
 
-[FMC]
+[FMC: firm]
 "I believe in showing up."
 
 [NARRATOR]
@@ -71,7 +70,7 @@ Three years. Today she would be polite for the fourth time.
 [NARRATOR]
 Her brother was outside the gym at eight-thirty in his truck, leaning against the hood. He looked up when she came out. He had not shaved.
 
-[ADULT_MALE_2]
+[ADULT_MALE_2: quiet, protective]
 "Ready?"
 
 [NARRATOR]
@@ -80,5 +79,5 @@ Her brother was outside the gym at eight-thirty in his truck, leaning against th
 [NARRATOR]
 Elena tucked the folder under her arm and pulled the office door shut behind her.
 
-[FMC]
+[FMC: decisive]
 "Drive."

@@ -2,7 +2,6 @@
 
 ## The Line
 
-<!-- Audio-prepared script: story text preserved; tags added for generation. -->
 
 [SFX: outdoor queue murmur; footsteps on pavement]
 
@@ -12,7 +11,7 @@ The line started at the door and curled around the side of the building, and the
 [NARRATOR]
 Elena stood with her brother and Tomás near the middle of it, the folder pressed against her ribs. Diego had his hands in his jacket pockets and was watching the front of the building. The two Gammas at the door wore the dark grey of the Vance Pack and were checking bags and asking names. They were polite. They were also enormous.
 
-[ADULT_MALE_1]
+[ADULT_MALE_1: low, observant]
 "Look at that,"
 
 [NARRATOR]
@@ -24,13 +23,13 @@ He was pointing with his chin. Elena followed his eyes.
 [NARRATOR]
 A black sedan was pulled up at the curb. The driver was standing beside it in a dark suit. Beside the car, in matching dark suits, stood three men in formation — two she recognized as Gammas from the briefing pamphlets the pack put out every season, and one she did not. The one she did not recognize was tall, broader than the others, and was buttoning his jacket as he walked toward the building.
 
-[ADULT_MALE_1]
+[ADULT_MALE_1: low, observant]
 "That's not the Beta,"
 
 [NARRATOR]
  Tomás said.
 
-[FMC]
+[FMC: quiet]
 "No,"
 
 [NARRATOR]
@@ -39,22 +38,22 @@ A black sedan was pulled up at the curb. The driver was standing beside it in a 
 [NARRATOR]
 A woman two places ahead of them turned around. She was about Marisol's age, gold hoop earrings, a coat too thin for October. 
 
-[ADULT_FEMALE_2]
+[ADULT_FEMALE_2: low, awed]
 "That's him,"
 
 [NARRATOR]
  she said, low, to nobody in particular. Her eyes were on the tall man in the suit. 
 
-[ADULT_FEMALE_2]
+[ADULT_FEMALE_2: low, awed]
 "That's the Alpha himself."
 
 [NARRATOR]
 The woman behind her said, 
 
-[ADULT_FEMALE_2]
+[ADULT_FEMALE_2: whispering]
 "He doesn't come."
 
-[ADULT_FEMALE_2]
+[ADULT_FEMALE_2: low, certain]
 "He's coming today."
 
 [NARRATOR]
@@ -72,55 +71,55 @@ She did not know whether to feel hopeful or sick.
 [NARRATOR]
 Diego was watching her. 
 
-[ADULT_MALE_2]
+[ADULT_MALE_2: low, concerned]
 "Ele."
 
-[FMC]
+[FMC: controlled]
 "I'm fine."
 
-[ADULT_MALE_2]
+[ADULT_MALE_2: dry, protective]
 "You're holding the folder like it's a weapon."
 
 [NARRATOR]
 She loosened her grip and looked down. The corner of the folder was creased where her thumb had been. She smoothed it.
 
-[FMC]
+[FMC: quiet, uneasy]
 "He's never come before,"
 
 [NARRATOR]
  she said, quietly.
 
-[ADULT_MALE_2]
+[ADULT_MALE_2: low, concerned]
 "I know."
 
-[FMC]
+[FMC: quiet, uneasy]
 "Why now?"
 
 [NARRATOR]
 Diego shrugged. 
 
-[ADULT_MALE_2]
+[ADULT_MALE_2: low, concerned]
 "Maybe somebody told him to."
 
 [NARRATOR]
 The line moved. The Gamma at the door gestured them forward and asked their names. He wrote her down on his tablet. He looked her over the way Gammas looked everyone over — flat, fast, professional — and his eyes went to the folder, and to her bag, and back to her face.
 
-[ADULT_MALE_2]
+[ADULT_MALE_2: official, flat]
 "Petition or comment?"
 
-[FMC]
+[FMC: formal]
 "Petition."
 
-[ADULT_MALE_2]
+[ADULT_MALE_2: official, flat]
 "Topic?"
 
-[FMC]
+[FMC: formal]
 "Funding request. Youth sports facility."
 
 [NARRATOR]
 He typed it. He handed her a numbered card. 
 
-[ADULT_MALE_2]
+[ADULT_MALE_2: official, flat]
 "Wait inside. Doors close at nine."
 
 [NARRATOR]

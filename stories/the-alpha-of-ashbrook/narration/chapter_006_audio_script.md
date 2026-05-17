@@ -2,7 +2,6 @@
 
 ## Gold
 
-<!-- Audio-prepared script: story text preserved; tags added for generation. -->
 
 [NARRATOR]
 The chairs were hard.

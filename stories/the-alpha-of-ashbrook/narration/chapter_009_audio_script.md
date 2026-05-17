@@ -2,14 +2,13 @@
 
 ## Someone Was Clapping
 
-<!-- Audio-prepared script: story text preserved; tags added for generation. -->
 
 [NARRATOR]
 She had time to think one clear thing as he lifted her: *this isn't real.*
 
 [SFX: sudden hall uproar; chair falling]
 
-[NARRATOR]
+[NARRATOR: tense]
 Then everything was very loud.
 
 [NARRATOR]
@@ -18,28 +17,28 @@ Diego was up and lunging across the empty seat where she had been, his hand reac
 [NARRATOR]
 She was not screaming. She noticed this about herself with a clinical kind of distance. She was very still in his arms. His chest was hot under her shoulder. He smelled like cedar and something darker she could not place, and his arm under her knees was solid as a beam, and his mouth was at her temple.
 
-[FMC]
+[FMC: quiet, shocked]
 "Put me down,"
 
 [NARRATOR]
  she said. Her voice was quiet. She did not recognize it. 
 
-[FMC]
+[FMC: quiet, shocked]
 "Put me down. Alpha. Put me down."
 
 [NARRATOR]
 He did not put her down.
 
-[MMC]
+[MMC: low, shaken, possessive]
 "You're safe,"
 
 [NARRATOR]
  he said. His voice was low and torn open. 
 
-[MMC]
+[MMC: low, shaken, possessive]
 "You're safe. You're safe."
 
-[FMC]
+[FMC: quiet, shocked]
 "Put me down."
 
 [SFX: doors bursting open; cold outdoor air; crowd noise]

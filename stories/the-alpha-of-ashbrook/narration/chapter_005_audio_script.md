@@ -2,7 +2,6 @@
 
 ## Weak Tea
 
-<!-- Audio-prepared script: story text preserved; tags added for generation. -->
 
 [SFX: fluorescent room tone; low crowd murmur]
 

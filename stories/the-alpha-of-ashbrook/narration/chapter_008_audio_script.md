@@ -2,11 +2,10 @@
 
 ## The Folder
 
-<!-- Audio-prepared script: story text preserved; tags added for generation. -->
 
 [SFX: crowd murmur rising]
 
-[NARRATOR]
+[NARRATOR: tense]
 Elena felt the room change before she understood it.
 
 [NARRATOR]
@@ -15,13 +14,13 @@ The Alpha was on his feet. His chair had scraped backward and was tipped slightl
 [NARRATOR]
 Diego's hand closed around Elena's wrist.
 
-[ADULT_MALE_2]
+[ADULT_MALE_2: low, urgent]
 "Get up,"
 
 [NARRATOR]
  he said. His voice was low. 
 
-[ADULT_MALE_2]
+[ADULT_MALE_2: low, concerned]
 "Ele. Get up. Now."
 
 [NARRATOR]
