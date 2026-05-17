@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-05-17T05:26:44.119848+00:00",
+  "script_path": "narration\\chapter_009_audio_script.md",
+  "script_sha256": "c0b6351d53f1d90ec37a75ebfe5f2a9f6cc8bed3926274448ce8e79c51224507",
+  "mp3_path": "output\\the-alpha-of-ashbrook\\chapter_009.mp3",
+  "mp3_sha256": "b2d0e6042df60b864c8021ea7d69916f7a893c9eda936a8ecffd46b0698cbf88",
+  "voice_roles": {
+    "NARRATOR": "fnYMz3F5gMEDGMWcH1ex",
+    "FMC": "j7e3J6ksqsziQcIGyAWI",
+    "MMC": "cymHWdiF8WjUCg6vvFxx"
+  },
+  "speakable_blocks": 18
+}
