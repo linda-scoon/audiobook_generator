@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-05-17T05:18:45.880379+00:00",
+  "script_path": "narration\\chapter_003_audio_script.md",
+  "script_sha256": "d39ee5b49201fc0a2a11db2f3a08b4d123601139e2f7a212c8b804a0e6906a00",
+  "mp3_path": "output\\chapter_003.mp3",
+  "mp3_sha256": "2f15df90dceebd2fc4898b5020fd8b594f4e728e9e423594350bb84e6805c249",
+  "voice_roles": {
+    "NARRATOR": "fnYMz3F5gMEDGMWcH1ex",
+    "ADULT_MALE_1": "7QN34D2r3hCNwbOYIeK0",
+    "MMC": "cymHWdiF8WjUCg6vvFxx"
+  },
+  "speakable_blocks": 29
+}

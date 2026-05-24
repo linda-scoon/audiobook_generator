@@ -178,13 +178,13 @@ def ensure_story_dirs(story: Story) -> None:
         path = story.path / relative
         if not path.exists():
             atomic_write_text(path, content)
-    output_readme = repo_root_for_story(story) / "output" / "README.md"
+    output_readme = story.path / "output" / "README.md"
     if not output_readme.exists():
         atomic_write_text(
             output_readme,
-            "# Generated audio output\n\nGenerated MP3 files and generation metadata are grouped by story slug. "
-            "Chapter files live directly inside each story folder, for example "
-            "`output/<story-slug>/chapter_001.mp3`; separate per-chapter folders are intentionally avoided.\n",
+            "# Generated audio output\n\nGenerated MP3 files and generation metadata live directly in this story output folder, "
+            "for example `output/chapter_001.mp3` and `output/chapter_001_metadata.json`. "
+            "Existing MP3s are not overwritten unless `--force` is passed.\n",
         )
 
 
@@ -377,7 +377,7 @@ def preparation_metadata_path(story: Story, number: int) -> Path:
 
 
 def story_output_dir(story: Story) -> Path:
-    return repo_root_for_story(story) / "output" / story.slug
+    return story.path / "output"
 
 
 def mp3_path(story: Story, number: int) -> Path:
@@ -707,7 +707,7 @@ def generate_story(story: Story, force: bool = False, chapter: int | None = None
             "created_at": now_iso(),
             "script_path": str(script.relative_to(story.path)),
             "script_sha256": sha256_file(script),
-            "mp3_path": str(target.relative_to(repo_root_for_story(story))),
+            "mp3_path": str(target.relative_to(story.path)),
             "mp3_sha256": sha256_file(target),
             "voice_roles": used_voice_ids,
             "speakable_blocks": len(speakable),
