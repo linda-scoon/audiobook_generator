@@ -200,6 +200,7 @@ Three reasons: (1) training data bias toward tutorial-style explanation — LLMs
 
 ### Inputs to the chapter-generation skill (every run)
 - `master_catalog.md` (project-level)
+- `global_writing_rules.md` (project-level) — cross-story writing rules that correct LLM default tendencies. Currently contains Rule 1 (Dialogue Emotional Register). Grows over time.
 - This story's `bible/static.md`, `world-building.md`, `style-guide.md`, `pronunciation-guide.md`
 - This story's `bible/heat_progression.md`
 - This story's `bible/no_go_list.md`
