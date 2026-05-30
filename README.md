@@ -38,11 +38,24 @@ Stories live under `stories/<story-slug>/` and are addressed by slug. The detail
 
 ## Commands callable from the repository root
 
-Each command below is a thin entrypoint at the repository root that forwards to the real script under `scripts/`. See the linked README for full usage, options, and examples.
+Each command below is a thin entrypoint at the repository root that forwards to the real script under `scripts/`. The callable forms are shown here; everything else (options, examples, cost notes, environment variables) lives in the linked per-script README.
 
 ### `./audio`
 
 The main audiobook workflow CLI. It exposes subcommands to check workflow status (`status`), prepare prose into tagged narration scripts (`prepare`), generate MP3s from prepared scripts via ElevenLabs (`generate`), do both end-to-end (`build`), and manage reusable voice-role assignments (`voices list|auto-assign|validate|preview`); preparation modes (`--prepared` / `--unprepared` / `--auto`) are explicit to prevent accidental paid AI calls.
+
+```bash
+./audio status [story]
+./audio prepare [story] (--prepared | --unprepared | --auto) [--chapter N] [--prepare-only] [--force]
+./audio generate [story] [--chapter N] [--force]
+./audio build [story] (--prepared | --unprepared | --auto) [--yes] [--chapter N] [--force]
+./audio voices list
+./audio voices auto-assign
+./audio voices validate [story]
+./audio voices preview --yes
+```
+
+If `[story]` is omitted, story commands operate on every folder under `stories/`. Story selectors may be slugs or title-like strings.
 
 Detailed docs: [`scripts/audio/README.md`](scripts/audio/README.md)
 
@@ -50,11 +63,24 @@ Detailed docs: [`scripts/audio/README.md`](scripts/audio/README.md)
 
 A safer one-command bash wrapper around `./audio build` that prints what it will do, requires `--story` unless you explicitly pass `--all-stories`, runs voice auto-assign and validation only when needed, skips voice setup entirely for `--prepare-only`, and supports `--dry-run` so you can preview the planned commands before spending any AI or ElevenLabs credits.
 
+```bash
+./run_audio --mode prepared|unprepared|auto --story STORY_SLUG [options]
+./run_audio --mode prepared|unprepared|auto --all-stories [options]
+./run_audio --help
+```
+
+Options: `--chapter N`, `--yes`, `--force`, `--prepare-only`, `--skip-voice-setup`, `--no-status`, `--dry-run`.
+
 Detailed docs: [`scripts/run_audio/README.md`](scripts/run_audio/README.md)
 
 ### `./create_story`
 
 Scaffolds a new story production folder under `stories/<slug>/` with the standard `source/`, `chapters/`, `bible/`, `narration/`, and `logs/` subfolders, a starter `story.json`, and per-folder READMEs explaining what to put inside; it slugifies the title argument and refuses to overwrite an existing story folder.
+
+```bash
+./create_story "Story Title"
+./create_story story-slug
+```
 
 Detailed docs: [`scripts/create_story_structure/README.md`](scripts/create_story_structure/README.md)
 
