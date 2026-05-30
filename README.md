@@ -1,156 +1,48 @@
 # audiobook_generator
 
-Local story-audio production workspace for preparing prose into tagged audio-drama scripts and generating MP3 output from the repository root.
+Local story-audio production workspace for preparing prose into tagged audio-drama scripts and generating MP3 output with ElevenLabs.
 
-## Story folder layout
+This README is the map of the repository: it explains what each command does in one sentence and points to the detailed README for that command. There is no operational detail here on purpose — that lives next to each script.
 
-Stories live under `stories/` and are addressed by their real folder slug, for example `stories/silver-footfalls/` or `stories/dark-house-guest/`.
+## Quick start
 
-Each story folder uses this layout:
+From the repository root:
+
+```bash
+./create_story "Silver Footfalls"     # scaffold a new story folder
+./audio status                        # see what's missing for every story
+./run_audio --story silver-footfalls --mode unprepared --chapter 1 --prepare-only
+```
+
+Then review the generated narration script and rerun without `--prepare-only` to produce the MP3.
+
+## Repository layout
 
 ```text
-stories/<story-slug>/
-  story.json
-  source/      # untouched full manuscript (.md, .txt, .docx)
-  chapters/    # clean split chapter source files, e.g. chapter_001.md
-  bible/       # character bibles, pronunciation notes, style guides
-  narration/   # prepared audio-drama scripts, e.g. chapter_001_audio_script.md
-  logs/        # preparation and generation logs
-  output/      # generated MP3s and generation metadata, e.g. chapter_001.mp3
+.
+├── audio                # root command → scripts/audio/audio_workflow.py
+├── run_audio            # root command → scripts/run_audio/run_audio.sh
+├── create_story         # root command → scripts/create_story_structure/create_story_structure.sh
+├── config/              # voice_roles.json and other shared configuration
+├── prompts/             # AI preparation prompt(s) read at runtime
+├── stories/             # one folder per story, with source/chapters/narration/output
+├── scripts/             # the actual implementation of each root command (one folder per script)
+│   ├── audio/
+│   ├── run_audio/
+│   └── create_story_structure/
+├── tests/               # pytest suite for the audio workflow
+└── docs/                # longer-form design / spec documents
 ```
 
-`chapters/` files preserve original story text split by chapter. `narration/` files contain the same story content with audio tags such as `[NARRATOR]`, `[FMC]`, `[MMC: low, controlled]`, `[WOLF_OR_MONSTER]`, and `[SFX: sound effect description]`.
+Stories live under `stories/<story-slug>/` and are addressed by slug. The detailed per-story folder layout is documented in [`scripts/audio/README.md`](scripts/audio/README.md).
 
-## Recommended one-command wrapper
+## Commands callable from the repository root
 
-If you want one command that checks status, fills missing reusable voice IDs when needed, validates voices, and then runs the build, use the wrapper script at `scripts/run_audio.sh`.
+Each command below is a thin entrypoint at the repository root that forwards to the real script under `scripts/`. The callable forms are shown here; everything else (options, examples, cost notes, environment variables) lives in the linked per-script README.
 
-The wrapper is intended to reduce setup friction while still protecting against unnecessary API usage:
+### `./audio`
 
-- It requires `--story` unless you explicitly pass `--all-stories`, so you do not accidentally process every story.
-- It does not source `.env`; the `./audio` CLI loads simple `.env` values itself.
-- It skips voice setup for `--prepare-only`, because no ElevenLabs MP3 generation is needed.
-- It runs `voices auto-assign` only when required voice IDs are missing or blank.
-- It validates only the selected story when `--story` is provided.
-- It keeps the built-in review pause unless you pass `--yes`.
-- It prints the exact commands it will run before it runs them.
-- It calls the repo entrypoint through a tested Python command, which avoids Windows Git Bash `python3`/Microsoft Store alias problems.
-
-### Wrapper command format
-
-Run from the repository root:
-
-```bash
-bash scripts/run_audio.sh --mode prepared|unprepared|auto --story STORY_SLUG [options]
-bash scripts/run_audio.sh --mode prepared|unprepared|auto --all-stories [options]
-```
-
-Required:
-
-```text
---mode prepared|unprepared|auto
---story STORY_SLUG       Process one story.
-    OR
---all-stories            Explicitly process every story under stories/.
-```
-
-Options:
-
-```text
---chapter NUMBER         Process one chapter only, e.g. 1.
---yes                    Skip the review pause where supported.
---force                  Regenerate existing outputs. Can spend credits again.
---prepare-only           Prepare narration scripts but do not generate MP3s.
---skip-voice-setup       Skip voice auto-assign/validate checks.
---no-status              Do not show ./audio status before running.
---dry-run                Print what would run, but do not run setup/build.
--h, --help               Show wrapper help.
-```
-
-### Safest first run
-
-Use `--dry-run` first if you want to see what the wrapper would do without making setup, AI, or ElevenLabs calls. This is also a quick way to confirm the wrapper found a working Python command:
-
-```bash
-bash scripts/run_audio.sh --story the-alpha-of-ashbrook --mode prepared --chapter 1 --dry-run
-```
-
-### Prepared narration scripts already exist
-
-If `stories/<story-slug>/narration/chapter_001_audio_script.md` already exists and contains valid tags, use `--prepared`:
-
-```bash
-bash scripts/run_audio.sh --story the-alpha-of-ashbrook --mode prepared --chapter 1
-```
-
-This does not call the AI preparation API. It may call ElevenLabs TTS if the MP3 output is missing and you are not using `--prepare-only`.
-
-### Prose needs AI preparation, but you want to review before MP3 generation
-
-This is the recommended low-cost workflow for unprepared prose:
-
-```bash
-bash scripts/run_audio.sh --story the-alpha-of-ashbrook --mode unprepared --chapter 1 --prepare-only
-```
-
-Then review the generated narration script:
-
-```text
-stories/the-alpha-of-ashbrook/narration/chapter_001_audio_script.md
-```
-
-After review, generate the MP3 from the prepared script:
-
-```bash
-bash scripts/run_audio.sh --story the-alpha-of-ashbrook --mode prepared --chapter 1
-```
-
-### One-step prepare-and-generate
-
-If you want one command to prepare prose and then continue into MP3 generation, pass `--yes`:
-
-```bash
-bash scripts/run_audio.sh --story the-alpha-of-ashbrook --mode unprepared --chapter 1 --yes
-```
-
-Use this carefully. `--yes` can skip the review pause after AI preparation and continue into ElevenLabs generation.
-
-### Auto mode
-
-`--auto` inspects files locally first. It only calls AI preparation for files that do not look like prepared audio-drama scripts:
-
-```bash
-bash scripts/run_audio.sh --story the-alpha-of-ashbrook --mode auto --chapter 1
-```
-
-Use `--auto` carefully on large stories. If you are unsure, combine it with `--prepare-only` first:
-
-```bash
-bash scripts/run_audio.sh --story the-alpha-of-ashbrook --mode auto --chapter 1 --prepare-only
-```
-
-### Process all stories intentionally
-
-The wrapper will not process every story unless you explicitly pass `--all-stories`:
-
-```bash
-bash scripts/run_audio.sh --all-stories --mode prepared
-```
-
-For cost control, avoid `--all-stories` with `--unprepared`, `--auto`, `--yes`, or `--force` unless you really intend to process everything.
-
-### Cost-control tips
-
-- Prefer `--story` and `--chapter` while testing.
-- Prefer `--prepare-only` before generating MP3s from newly prepared prose.
-- Avoid `--yes` until you are comfortable with the generated narration format.
-- Avoid `--force` unless you intentionally want to regenerate existing narration scripts or MP3s.
-- Use `--dry-run` to inspect the planned commands before spending API credits.
-- Use `--prepared` whenever narration scripts already contain valid speaker tags.
-
-## Root commands
-
-All commands are intended to be run from the repository root:
+The main audiobook workflow CLI. It exposes subcommands to check workflow status (`status`), prepare prose into tagged narration scripts (`prepare`), generate MP3s from prepared scripts via ElevenLabs (`generate`), do both end-to-end (`build`), and manage reusable voice-role assignments (`voices list|auto-assign|validate|preview`); preparation modes (`--prepared` / `--unprepared` / `--auto`) are explicit to prevent accidental paid AI calls.
 
 ```bash
 ./audio status [story]
@@ -163,102 +55,57 @@ All commands are intended to be run from the repository root:
 ./audio voices preview --yes
 ```
 
-If `[story]` is omitted, story commands operate on every folder under `stories/`. Story selectors may be slugs or title-like strings; title-like input is slugified before lookup.
+If `[story]` is omitted, story commands operate on every folder under `stories/`. Story selectors may be slugs or title-like strings.
 
-## Reusable voice roles
+Detailed docs: [`scripts/audio/README.md`](scripts/audio/README.md)
 
-The workflow uses reusable voice-role labels rather than one voice per fictional character. Narration scripts must use the supported role labels directly; character-name tags such as `[ELENA]` or `[ROMAN]` are intentionally not supported.
+### `./run_audio`
 
-Voice IDs are stored in `config/voice_roles.json`:
-
-```json
-{
-  "NARRATOR": "",
-  "FMC": "",
-  "MMC": "",
-  "DEFAULT_FEMALE": "",
-  "DEFAULT_MALE": "",
-  "ADULT_FEMALE_1": "",
-  "ADULT_FEMALE_2": "",
-  "ADULT_MALE_1": "",
-  "ADULT_MALE_2": "",
-  "OLDER_FEMALE": "",
-  "OLDER_MALE": "",
-  "TEEN_FEMALE": "",
-  "TEEN_MALE": "",
-  "CHILD_FEMALE": "",
-  "CHILD_MALE": "",
-  "WOLF_OR_MONSTER": ""
-}
-```
-
-Each value must be a real ElevenLabs `voice_id`. MP3 generation fails safely before calling ElevenLabs if a required role is missing, if any required voice ID is blank, or if a narration script contains an unknown speaker label.
-
-Useful voice commands:
-
-- `./audio voices list` calls the ElevenLabs List Voices API and prints available voice names and IDs. It does not spend generation credits.
-- `./audio voices auto-assign` calls the ElevenLabs List Voices API, fills blank role IDs in `config/voice_roles.json`, and preserves existing saved IDs on later runs. It does not spend generation credits.
-- `./audio voices validate` checks that all required roles exist, all required role IDs are non-empty, and narration scripts only use known role labels. It does not call generation.
-- `./audio voices preview --yes` generates a short sample MP3 per role and spends ElevenLabs generation credits; without `--yes`, it stops with a warning.
-
-## Preparation modes
-
-Preparation mode is explicit on commands that may prepare narration scripts:
-
-- `--prepared`: inputs already contain audio-drama tags. The tool validates locally and does not call an AI preparation API.
-- `--unprepared`: inputs are prose and need AI preparation after all local validation passes.
-- `--auto`: the tool inspects files locally first. AI is called only for files that do not appear to contain enough valid audio-drama blocks.
-
-The explicit mode requirement prevents accidental paid AI preparation calls. Before any AI call, the tool validates story resolution, input existence, supported extension, readability, non-empty content, output overwrite safety, and prepared/unprepared consistency.
-
-To prepare one unprepared chapter without generating MP3 audio:
+A safer one-command bash wrapper around `./audio build` that prints what it will do, requires `--story` unless you explicitly pass `--all-stories`, runs voice auto-assign and validation only when needed, skips voice setup entirely for `--prepare-only`, and supports `--dry-run` so you can preview the planned commands before spending any AI or ElevenLabs credits.
 
 ```bash
-./audio prepare <story> --chapter 1 --unprepared --prepare-only
+./run_audio --mode prepared|unprepared|auto --story STORY_SLUG [options]
+./run_audio --mode prepared|unprepared|auto --all-stories [options]
+./run_audio --help
 ```
 
-This creates `stories/<story-slug>/narration/chapter_001_audio_script.md` and does not call ElevenLabs.
+Options: `--chapter N`, `--yes`, `--force`, `--prepare-only`, `--skip-voice-setup`, `--no-status`, `--dry-run`.
 
-## Preparation prompt
+Detailed docs: [`scripts/run_audio/README.md`](scripts/run_audio/README.md)
 
-The reusable prompt for converting normal prose into tagged narration scripts lives at:
+### `./create_story`
 
-```text
-prompts/audio_script_preparation_prompt.md
-```
-
-The preparation module reads this file at runtime and sends that prompt plus the chapter text to the selected AI provider. If the prompt file is missing or empty, preparation stops with a clear error. Edit this file to control how unprepared prose is converted into the required voice-role narration format.
-
-## Build order
-
-For each story/chapter, the workflow is:
-
-1. Use `narration/chapter_###_audio_script.md` if it exists.
-2. Otherwise prepare from `chapters/chapter_###.md`, `.txt`, or `.docx`.
-3. Otherwise split a single manuscript from `source/` into clean chapter files, then prepare narration scripts.
-4. Generate MP3s into the story-local `stories/<story-slug>/output/` folder only after narration scripts exist and `config/voice_roles.json` contains non-blank IDs for all required roles. Chapter MP3s and metadata stay directly in that output folder; the workflow intentionally avoids extra per-story or per-chapter output folders to keep the tree shallow.
-
-Existing chapter files, narration scripts, and MP3s are skipped unless `--force` is passed. `audio status` reports missing and stale artifacts and recommends the next command.
-
-## Environment variables
-
-AI preparation supports OpenAI or Anthropic:
+Scaffolds a new story production folder under `stories/<slug>/` with the standard `source/`, `chapters/`, `bible/`, `narration/`, and `logs/` subfolders, a starter `story.json`, and per-folder READMEs explaining what to put inside; it slugifies the title argument and refuses to overwrite an existing story folder.
 
 ```bash
-OPENAI_API_KEY=...
-ANTHROPIC_API_KEY=...
-AI_PREPARATION_PROVIDER=openai  # or anthropic
+./create_story "Story Title"
+./create_story story-slug
 ```
 
-MP3 generation and voice management use ElevenLabs:
+Detailed docs: [`scripts/create_story_structure/README.md`](scripts/create_story_structure/README.md)
+
+## Configuration
+
+- `config/voice_roles.json` — maps reusable role labels (`NARRATOR`, `FMC`, `MMC`, etc.) to real ElevenLabs `voice_id` values. The `./audio voices auto-assign` command fills blank entries from your ElevenLabs account.
+- `prompts/audio_script_preparation_prompt.md` — the system prompt the AI preparer sends together with chapter prose. Edit it to control how unprepared prose is converted into the required voice-role narration format.
+- `.env` (optional, git-ignored) — `KEY=VALUE` lines loaded automatically by `./audio`. See the [audio CLI README](scripts/audio/README.md#environment-variables) for required keys (`OPENAI_API_KEY` / `ANTHROPIC_API_KEY`, `ELEVENLABS_API_KEY`, optional `ELEVENLABS_MODEL_ID`, optional `AI_PREPARATION_PROVIDER`).
+
+## Documentation
+
+Longer-form design and specification documents live in [`docs/`](docs/):
+
+- [`docs/AI_Story_Pipeline_Spec.md`](docs/AI_Story_Pipeline_Spec.md) — working spec for the autonomous chapter-generation pipeline.
+
+## Development
+
+The audiobook CLI is plain Python with no third-party runtime dependencies; it talks to OpenAI / Anthropic / ElevenLabs directly via `urllib`. Tests use `pytest`:
 
 ```bash
-ELEVENLABS_API_KEY=...
-ELEVENLABS_MODEL_ID=eleven_multilingual_v2  # optional
+pytest tests/
 ```
 
-You can export those values in your shell or put them in a repo-root `.env` file. The CLI automatically loads simple `KEY=VALUE` lines from `.env` at startup, without overwriting variables that are already exported in your shell. `.env` is ignored by git so local API keys are not committed.
+`tests/conftest.py` puts `scripts/audio/` on `sys.path` so the test modules can `import audio_workflow` and `from ai_script_preparer import ...` the same way the root `./audio` entrypoint does.
 
-`ELEVENLABS_VOICE_ID` is not used. Voice IDs are resolved by role from `config/voice_roles.json`.
+## License & usage
 
-API keys are only required when paid work, AI preparation, or ElevenLabs account lookup is actually needed. Status, local validation, and voice-role JSON checks do not spend generation credits.
+This is a personal production workspace. Generated narration scripts and MP3s under `stories/*/output/` are git-ignored; only source manuscripts, chapter splits, and tooling are versioned.

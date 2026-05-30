@@ -5,9 +5,12 @@ set -euo pipefail
 #
 # Creates a self-contained story production folder for the story-audio-generator repo.
 #
-# Usage:
-#   bash scripts/create_story_structure.sh "Silver Footfalls"
-#   bash scripts/create_story_structure.sh silver-footfalls
+# Usage (from the repository root):
+#   ./create_story "Silver Footfalls"
+#   ./create_story silver-footfalls
+#
+# Or invoke this script directly:
+#   bash scripts/create_story_structure/create_story_structure.sh "Silver Footfalls"
 #
 # Output:
 #   stories/silver-footfalls/
@@ -21,7 +24,7 @@ set -euo pipefail
 
 if [ "$#" -lt 1 ]; then
   echo "Error: Please provide a story title or slug."
-  echo "Usage: bash scripts/create_story_structure.sh \"Story Title\""
+  echo "Usage: ./create_story \"Story Title\""
   exit 1
 fi
 

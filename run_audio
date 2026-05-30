@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Repository-root entrypoint for the safer audio build wrapper.
+# Forwards all arguments to scripts/run_audio/run_audio.sh.
+set -euo pipefail
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+exec bash "$HERE/scripts/run_audio/run_audio.sh" "$@"

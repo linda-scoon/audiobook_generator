@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Repository-root entrypoint for scaffolding a new story folder.
+# Forwards all arguments to scripts/create_story_structure/create_story_structure.sh.
+set -euo pipefail
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+exec bash "$HERE/scripts/create_story_structure/create_story_structure.sh" "$@"

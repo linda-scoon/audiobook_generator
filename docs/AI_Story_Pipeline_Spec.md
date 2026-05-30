@@ -84,7 +84,7 @@ Whenever a new story is created, the following structure must be initialised.
 
 ### Action item for Claude Code
 
-**Update `scripts/create_story_structure.sh` to:**
+**Update `scripts/create_story_structure/create_story_structure.sh` to:**
 1. Create a `chapters/` folder with a `README.md` inside.
 2. Create a `summaries/` folder with a `README.md` inside.
 3. Confirm `logs/` remains reserved for ElevenLabs script logs and does not receive chapter recaps.
@@ -320,9 +320,9 @@ Reference snapshot of the repo at the time of writing — used as context for th
 ```
 .gitignore
 README.md
-ai_script_preparer.py
-audio
-audio_workflow.py
+audio                  # entrypoint → scripts/audio/audio_workflow.py
+run_audio              # entrypoint → scripts/run_audio/run_audio.sh
+create_story           # entrypoint → scripts/create_story_structure/create_story_structure.sh
 config/voice_roles.json
 ```
 
@@ -333,8 +333,10 @@ prompts/audio_script_preparation_prompt.md
 
 ### Existing scripts
 ```
-scripts/create_story_structure.sh
-scripts/run_audio.sh
+scripts/audio/audio_workflow.py
+scripts/audio/ai_script_preparer.py
+scripts/run_audio/run_audio.sh
+scripts/create_story_structure/create_story_structure.sh
 ```
 
 ### Stories folder
@@ -350,7 +352,7 @@ tests/test_audio_workflow.py
 ```
 
 ### Gap analysis — what's missing for the new pipeline
-- `scripts/create_story_structure.sh` needs updating: add `chapters/`, add `summaries/`, ensure `logs/` stays reserved for ElevenLabs.
+- `scripts/create_story_structure/create_story_structure.sh` needs updating: add `chapters/`, add `summaries/`, ensure `logs/` stays reserved for ElevenLabs.
 - New script needed: `scripts/populate_story_files.py` — runs after skeleton approval, reads `files_to_create`, creates empty placeholders.
 - New prompts needed: `prompts/skeleton_generation_prompt.md`, `prompts/file_population_prompt.md`, `prompts/chapter_generation_prompt.md`, `prompts/self_check_prompt.md`.
 - New folder needed inside each story: `summaries/`.
