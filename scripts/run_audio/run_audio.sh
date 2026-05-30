@@ -4,7 +4,8 @@ set -Eeuo pipefail
 # run_audio.sh
 #
 # Safer one-command wrapper for audiobook_generator.
-# Run from the repository root.
+# Run from the repository root via the ./run_audio entrypoint, or invoke this
+# script directly with: bash scripts/run_audio/run_audio.sh
 #
 # Why this wrapper runs `python audio` instead of `./audio`:
 #   On Windows Git Bash, the ./audio shebang may resolve to a broken python3
@@ -33,8 +34,8 @@ DRY_RUN=0
 usage() {
   cat <<'USAGE'
 Usage:
-  bash scripts/run_audio.sh --mode prepared|unprepared|auto --story STORY_SLUG [options]
-  bash scripts/run_audio.sh --mode prepared|unprepared|auto --all-stories [options]
+  ./run_audio --mode prepared|unprepared|auto --story STORY_SLUG [options]
+  ./run_audio --mode prepared|unprepared|auto --all-stories [options]
 
 Required:
   --mode prepared|unprepared|auto
@@ -53,9 +54,9 @@ Options:
   -h, --help               Show this help.
 
 Recommended low-cost workflow for unprepared prose:
-  bash scripts/run_audio.sh --story the-alpha-of-ashbrook --mode unprepared --chapter 1 --prepare-only
+  ./run_audio --story the-alpha-of-ashbrook --mode unprepared --chapter 1 --prepare-only
   # Review stories/the-alpha-of-ashbrook/narration/chapter_001_audio_script.md
-  bash scripts/run_audio.sh --story the-alpha-of-ashbrook --mode prepared --chapter 1
+  ./run_audio --story the-alpha-of-ashbrook --mode prepared --chapter 1
 
 If you see a Windows/Microsoft Store Python alias error, make sure `python --version`
 works in this shell. This wrapper intentionally uses the working Python command it finds.

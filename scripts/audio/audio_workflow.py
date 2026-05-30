@@ -212,7 +212,7 @@ def resolve_stories(repo_root: Path, selector: str | None) -> list[Story]:
     available = "\n".join(f"- {path.name}" for path in folders)
     raise WorkflowError(
         f"Story not found: {selector}\n\nLooked for: stories/{wanted}/\n\nAvailable stories:\n{available}\n\n"
-        "If this is a new story, create it first with scripts/create_story_structure.sh."
+        "If this is a new story, create it first with ./create_story \"Story Title\"."
     )
 
 
